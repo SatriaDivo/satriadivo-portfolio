@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { siteMetadata } from "@/data/metadata";
 
 const navLinks = [
-  { href: "#", label: "Beranda" },
-  { href: "#", label: "Resume" },
-  { href: "#", label: "Proyek" },
+  { href: "#beranda", label: "Beranda" },
+  { href: "#resume", label: "Resume" },
+  { href: "#proyek", label: "Proyek" },
 ] as const;
 
 export function Nav() {

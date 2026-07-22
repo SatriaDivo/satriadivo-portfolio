@@ -5,7 +5,7 @@ import { MotionWrapper } from "./motion-wrapper";
 export function ProfileCard() {
   return (
     <MotionWrapper>
-      <div className="bg-[var(--color-card)] border border-[var(--color-mist)] rounded-lg shadow-sm p-6 sm:p-8 mb-6">
+      <div id="beranda" className="bg-[var(--color-card)] border border-[var(--color-mist)] rounded-lg shadow-sm p-6 sm:p-8 mb-6 scroll-mt-24">
         <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center mb-6">
           <div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full overflow-hidden border-2 border-[var(--color-mist)] shrink-0">
             <img 

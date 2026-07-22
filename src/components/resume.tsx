@@ -3,7 +3,7 @@ import { MotionWrapper } from "./motion-wrapper";
 
 export function Resume() {
   return (
-    <div className="mt-12 space-y-10">
+    <div id="resume" className="mt-12 space-y-10 scroll-mt-24">
       {/* Pengalaman Kerja */}
       <MotionWrapper>
         <section>

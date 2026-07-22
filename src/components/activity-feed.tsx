@@ -3,7 +3,7 @@ import { MotionWrapper } from "./motion-wrapper";
 
 export function ActivityFeed() {
   return (
-    <div className="mt-8">
+    <div id="proyek" className="mt-8 scroll-mt-24">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Featured Projects</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {projects.map((project, index) => (
