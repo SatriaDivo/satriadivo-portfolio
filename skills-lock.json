@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "design-intelligence": {
+      "source": "RahmatHadinata23758051/SKILL-Design-Intelligence",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "8d637f9c9bac9b8c706fcd503ca71bdd838f59f746e359db9f87d0c86a467c64"
+    }
+  }
+}

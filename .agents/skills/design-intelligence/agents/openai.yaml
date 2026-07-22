@@ -1,0 +1,4 @@
+interface:
+  display_name: "Design Intelligence"
+  short_description: "Audit and generate human-grade UI"
+  default_prompt: "Use $design-intelligence to analyze this UI, generate Design DNA, and score AI slop risk."
