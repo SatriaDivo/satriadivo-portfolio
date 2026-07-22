@@ -31,12 +31,9 @@ export function Nav() {
         {/* Logo/Name */}
         <a
           href="#"
-          className="text-lg font-extrabold tracking-tight text-gray-900 hover:text-blue-600 transition-colors flex items-center gap-3"
+          className="text-lg font-extrabold tracking-tight text-gray-900 hover:text-blue-600 transition-colors flex items-center"
         >
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 text-white flex items-center justify-center font-bold text-sm shadow-md">
-            {siteMetadata.shortName}
-          </div>
-          <span className="hidden sm:inline-block">{siteMetadata.name}</span>
+          <span>{siteMetadata.name}</span>
         </a>
 
         {/* Desktop Navigation Links */}
