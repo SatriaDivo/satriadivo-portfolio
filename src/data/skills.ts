@@ -5,39 +5,34 @@ export interface SkillGroup {
 
 export const skillGroups: SkillGroup[] = [
   {
-    category: "Embedded & IoT",
-    items: [
-      "ESP32 & Arduino ecosystem",
-      "Raspberry Pi (SBC architecture)",
-      "Non-blocking state machines",
-      "Serial comm (UART, MAX3232)",
-    ],
+    category: "Internet of Things (IoT) Development",
+    items: ["Arduino", "ESP32", "Raspberry Pi"],
   },
   {
-    category: "AI & Machine Learning",
-    items: [
-      "Computer Vision pipelines",
-      "TensorFlow Lite (Edge AI)",
-      "LLM integration & prompting",
-      "Data analytics & visualization",
-    ],
+    category: "Artificial Intelligence & Machine Learning",
+    items: ["Model development", "TensorFlow Lite", "feature engineering"],
   },
   {
-    category: "Web & Backend",
-    items: [
-      "Rust (Axum, Tauri)",
-      "Next.js & React ecosystem",
-      "PostgreSQL & Redis",
-      "Node.js backend",
-    ],
+    category: "Cloud Computing & DevOps",
+    items: ["AWS", "Docker", "Kubernetes", "CI/CD"],
   },
   {
-    category: "Infrastructure & Certs",
+    category: "Networking & Security",
+    items: ["CCNA-level", "Firewall", "VPN", "Penetration Testing"],
+  },
+  {
+    category: "Web & Mobile Development",
+    items: ["React", "Next.js", "Node.js", "React Native"],
+  },
+  {
+    category: "Soft Skill",
     items: [
-      "AWS (Certified — Cloud Architecting & Foundations)",
-      "CCNA (Certified — Enterprise Networking, Security & Automation)",
-      "Docker, Kubernetes, CI/CD",
-      "Firewall, VPN & penetration testing",
+      "Kerja dalam tim",
+      "Kepemimpinan",
+      "Komunikasi",
+      "Problem Solving",
+      "Adaptif",
+      "Manajemen Waktu",
     ],
   },
 ];

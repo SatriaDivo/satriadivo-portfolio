@@ -7,7 +7,8 @@
 
 @theme {
   /* — Color Tokens — */
-  --color-paper: #F7F5F0;
+  --color-bg: #F3F4F6;
+  --color-card: #FFFFFF;
   --color-ink-circuit: #1B2A22;
   --color-trace-green: #2F6F4E;
   --color-solder-copper: #C97D3B;
@@ -31,7 +32,7 @@ html {
 }
 
 body {
-  background-color: var(--color-paper);
+  background-color: var(--color-bg);
   color: var(--color-ink-circuit);
   font-family: var(--font-body), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   -webkit-font-smoothing: antialiased;
@@ -47,7 +48,7 @@ body {
 
 ::selection {
   background-color: var(--color-trace-green);
-  color: var(--color-paper);
+  color: var(--color-bg);
 }
 
 /* — Reduced Motion — */
