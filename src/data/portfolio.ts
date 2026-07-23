@@ -112,15 +112,18 @@ export const experience = [
 export const organization = [
   {
     role: "Wakil Gubernur",
-    org: "Lembaga Eksekutif Mahasiswa — Jurusan Teknologi Informasi",
+    org: "Lembaga Eksekutif Mahasiswa",
+    department: "Jurusan Teknologi Informasi",
     institution: "Politeknik Negeri Lampung",
-    period: "Maret 2025 – Sekarang",
+    period: "Maret 2025 – Maret 2026",
     highlights: [
-      "Mengambil keputusan strategis bersama Gubernur dalam pengelolaan lembaga",
-      "Mengkoordinasikan divisi-divisi internal untuk memastikan program berjalan sesuai timeline",
-      "Mengawasi pelaksanaan kegiatan kemahasiswaan sesuai SOP",
-      "Menjalin komunikasi dengan organisasi internal kampus dan pihak jurusan",
-      "Membantu penyusunan dan evaluasi program kerja tahunan",
+      "Merumuskan keputusan strategis bersama Gubernur untuk arah kebijakan dan pengelolaan lembaga",
+      "Mengoordinasikan seluruh divisi internal guna memastikan setiap program kerja berjalan sesuai timeline",
+      "Bertindak sebagai penanggung jawab operasional saat Gubernur berhalangan — memimpin rapat dan memberikan arahan",
+      "Mengawasi pelaksanaan kegiatan kemahasiswaan dan memastikan kepatuhan terhadap SOP",
+      "Membangun komunikasi aktif dengan organisasi internal kampus dan pihak jurusan",
+      "Menyusun, mengevaluasi, dan mengoptimalkan program kerja tahunan",
+      "Menyelesaikan permasalahan internal organisasi melalui pendekatan solutif dan strategis",
     ],
   },
 ];

@@ -4,13 +4,14 @@ import { NavBar } from './components/NavBar';
 import { Section } from './components/Section';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
+import { Experience } from './components/Experience';
 import { FocusAreas } from './components/FocusAreas';
 import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-paper text-ink-circuit font-body flex flex-col">
+    <>
       <NavBar />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-8 md:px-16 pt-8 sm:pt-12 pb-12 w-full flex-1">
@@ -66,6 +67,10 @@ export default function App() {
             <Projects />
           </Section>
 
+          <Section id="experience" eyebrow="ORG_LOG" title="Organizational Experience">
+            <Experience />
+          </Section>
+
           <Section id="focus" eyebrow="CORE_AREAS" title="Technical Focus">
             <FocusAreas />
           </Section>
@@ -92,6 +97,6 @@ export default function App() {
           © {new Date().getFullYear()} — Embedded · AI · Cloud
         </p>
       </footer>
-    </div>
+    </>
   );
 }
