@@ -17,12 +17,17 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-paper text-ink-circuit font-body antialiased selection:bg-trace-green selection:text-paper;
   }
-  
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display font-bold text-ink-circuit;
   }
 
