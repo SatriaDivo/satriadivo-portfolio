@@ -24,8 +24,8 @@ export function BlogPost() {
       className="max-w-3xl mx-auto px-4 sm:px-8 py-16 w-full"
     >
       <div className="mb-12 border-b border-mist pb-8">
-        <Link to="/blog" className="text-[10px] font-mono font-bold text-trace-green hover:text-solder-copper mb-8 inline-block">
-          ← BACK_TO_BLOG
+        <Link to="/" className="text-[10px] font-mono font-bold text-trace-green hover:text-solder-copper mb-8 inline-block">
+          ← BACK_TO_HOME
         </Link>
         <h1 className="text-3xl md:text-5xl font-display font-bold text-ink-circuit leading-tight mb-4">
           {post.title}
