@@ -76,13 +76,13 @@ export function Hero() {
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className="text-sm border-b border-dashed border-trace-green py-1 flex justify-between font-mono transition-colors hover:border-solder-copper"
+            className="text-sm border-b border-dashed border-trace-green py-1 flex justify-between font-mono transition-colors hover:border-solder-copper hover:text-solder-copper"
             whileHover={{ x: 4 }}
           >
-            <span className="font-bold text-ink-circuit transition-colors">
+            <span className="font-bold">
               {link.label}
             </span>
-            <span className="transition-colors">↗</span>
+            <span>↗</span>
           </motion.a>
         ))}
       </motion.div>
