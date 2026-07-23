@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getPostBySlug } from '../lib/blog';
@@ -8,11 +8,24 @@ import { useEffect } from 'react';
 export function BlogPost() {
   const { slug } = useParams();
   const post = getPostBySlug(slug || '');
+  const navigate = useNavigate();
 
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
+
+  const handleBack = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate('/');
+    // Wait for React to render, then scroll to #blog section
+    setTimeout(() => {
+      const el = document.getElementById('blog');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   if (!post) {
     return (
@@ -30,12 +43,13 @@ export function BlogPost() {
       className="max-w-3xl mx-auto px-4 sm:px-8 py-16 w-full"
     >
       <div className="mb-12 border-b border-mist pb-8">
-        <Link 
-          to="/#blog"
+        <a 
+          href="/#blog"
+          onClick={handleBack}
           className="text-[10px] font-mono font-bold text-trace-green hover:text-solder-copper mb-8 inline-block"
         >
           ← BACK_TO_HOME
-        </Link>
+        </a>
         <h1 className="text-3xl md:text-5xl font-display font-bold text-ink-circuit leading-tight mb-4">
           {post.title}
         </h1>
