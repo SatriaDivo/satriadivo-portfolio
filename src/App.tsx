@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { personalInfo } from './data/portfolio';
 import { NavBar } from './components/NavBar';
 import { Section } from './components/Section';
 import { Hero } from './components/Hero';
@@ -79,16 +80,16 @@ export default function App() {
         </div>
       </main>
 
-      {/* Footer — status indicator */}
+      {/* Footer */}
       <footer className="px-6 sm:px-12 py-6 border-t border-mist flex flex-col sm:flex-row justify-between items-center bg-paper mt-auto gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 bg-trace-green rounded-sm animate-pulse" />
-          <p className="text-[9px] font-mono uppercase tracking-widest text-ink-circuit">
-            Status: Optimized / Latency Low
+          <div className="w-2.5 h-2.5 rounded-full bg-trace-green animate-pulse" />
+          <p className="text-[9px] font-mono uppercase tracking-widest text-slate-node">
+            {personalInfo.name} — {personalInfo.role}
           </p>
         </div>
-        <p className="text-[9px] font-mono text-ink-circuit/50 italic">
-          © {new Date().getFullYear()} PORTFOLIO — DATA.AI.EMBEDDED.v2
+        <p className="text-[9px] font-mono text-ink-circuit/40">
+          © {new Date().getFullYear()} — Embedded · AI · Cloud
         </p>
       </footer>
     </div>
