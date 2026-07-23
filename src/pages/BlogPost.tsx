@@ -15,18 +15,6 @@ export function BlogPost() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
-  const handleBack = (e: React.MouseEvent) => {
-    e.preventDefault();
-    navigate('/');
-    // Wait for React to render, then scroll to #blog section
-    setTimeout(() => {
-      const el = document.getElementById('blog');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
-  };
-
   if (!post) {
     return (
       <div className="max-w-3xl mx-auto px-4 py-16 text-center">
@@ -44,11 +32,20 @@ export function BlogPost() {
     >
       <div className="mb-12 border-b border-mist pb-8">
         <a 
-          href="/#blog"
-          onClick={handleBack}
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            // If user came from home page (#blog section), go back there.
+            // Otherwise, go back to the blog list.
+            if (window.history.length > 1 && document.referrer.includes(window.location.host)) {
+              navigate(-1);
+            } else {
+              navigate('/blog');
+            }
+          }}
           className="text-[10px] font-mono font-bold text-trace-green hover:text-solder-copper mb-8 inline-block"
         >
-          ← BACK_TO_HOME
+          ← GO_BACK
         </a>
         <h1 className="text-3xl md:text-5xl font-display font-bold text-ink-circuit leading-tight mb-4">
           {post.title}

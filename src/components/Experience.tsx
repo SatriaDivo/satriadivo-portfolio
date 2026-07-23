@@ -1,76 +1,53 @@
 import { motion } from 'motion/react';
 import { organization } from '../data/portfolio';
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
-
-const bulletVariants = {
-  hidden: { opacity: 0, x: -12 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.35, delay: 0.3 + i * 0.06, ease: 'easeOut' },
+    transition: { duration: 0.5, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] },
   }),
 };
 
 export function Experience() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-12">
       {organization.map((org, idx) => (
-        <motion.article
-          key={org.org}
-          variants={cardVariants}
+        <motion.div
+          key={org.role + org.org}
+          variants={itemVariants}
           custom={idx}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-20px' }}
-          className="relative bg-mist/40 border border-mist p-5 sm:p-6 hover:border-solder-copper transition-colors"
+          className="relative pl-6 sm:pl-8 border-l border-mist"
         >
-          {/* Header */}
-          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-4">
-            <div>
-              <h3 className="font-bold text-base sm:text-lg tracking-tight font-display text-ink-circuit uppercase">
-                {org.role}
-              </h3>
-              <p className="text-sm font-body text-ink-circuit/70 mt-0.5">
-                {org.org} — {org.department}
-              </p>
-              <p className="text-[10px] font-mono uppercase tracking-widest text-slate-node mt-0.5">
-                {org.institution}
-              </p>
+          {/* Timeline Dot */}
+          <div className="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-solder-copper" />
+
+          <div className="mb-4">
+            <h3 className="font-display font-bold text-lg sm:text-xl text-ink-circuit uppercase tracking-tight">
+              {org.org}
+            </h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-xs sm:text-sm font-mono text-trace-green mt-1">
+              <span className="font-bold">{org.role}</span>
+              <span className="hidden sm:inline text-mist">•</span>
+              <span>{org.department}</span>
+              <span className="hidden sm:inline text-mist">•</span>
+              <span className="text-ink-circuit/60">{org.period}</span>
             </div>
-            <motion.span
-              className="text-[10px] sm:text-xs font-mono bg-solder-copper text-white px-2 py-0.5 rounded-sm whitespace-nowrap self-start"
-              whileHover={{ scale: 1.05 }}
-            >
-              {org.period}
-            </motion.span>
           </div>
 
-          {/* Highlights */}
-          <ul className="space-y-2">
-            {org.highlights.map((item, i) => (
-              <motion.li
-                key={i}
-                variants={bulletVariants}
-                custom={i}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="flex items-start gap-3 text-sm sm:text-base text-ink-circuit/80 leading-relaxed font-body"
-              >
-                <span className="text-trace-green font-bold select-none mt-0.5 shrink-0">▸</span>
-                <span>{item}</span>
-              </motion.li>
+          <ul className="space-y-2 text-sm sm:text-base font-body text-ink-circuit/80">
+            {org.highlights.map((point, i) => (
+              <li key={i} className="flex gap-3">
+                <span className="text-solder-copper shrink-0 mt-1.5 text-[8px]">▶</span>
+                <span>{point}</span>
+              </li>
             ))}
           </ul>
-        </motion.article>
+        </motion.div>
       ))}
     </div>
   );

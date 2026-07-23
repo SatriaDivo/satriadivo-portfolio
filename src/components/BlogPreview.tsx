@@ -60,13 +60,13 @@ export function BlogPreview() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4 }}
-        className="text-center pt-2"
+        className="pt-2"
       >
         <Link
           to="/blog"
-          className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold text-trace-green hover:text-solder-copper transition-colors border-b border-dashed border-trace-green hover:border-solder-copper pb-0.5"
+          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold text-trace-green hover:text-solder-copper transition-colors border-b border-dashed border-trace-green hover:border-solder-copper pb-0.5"
         >
-          View all posts ({getAllPosts().length})
+          Lihat semua {getAllPosts().length} log tulisan
           <span className="text-xs">→</span>
         </Link>
       </motion.div>

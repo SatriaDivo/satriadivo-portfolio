@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { getAllPosts } from '../lib/blog';
 
 const CATEGORIES = ['All', 'Embedded', 'AI/ML', 'Cloud', 'Networking', 'Research'];
@@ -36,6 +36,11 @@ export function BlogList() {
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
   const pagedPosts = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  // Scroll to top on mount
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-8 py-16 w-full">
