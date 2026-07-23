@@ -20,7 +20,7 @@ export function FocusAreas() {
           custom={idx}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-40px' }}
+          viewport={{ once: true, margin: '-20px' }}
           className="flex items-center gap-3"
         >
           <motion.span

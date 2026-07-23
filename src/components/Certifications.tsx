@@ -13,7 +13,7 @@ const badgeVariants = {
 export function Certifications() {
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
         {personalInfo.certificationBadges.map((badge, idx) => (
           <motion.a
             key={badge.url}
@@ -24,7 +24,7 @@ export function Certifications() {
             custom={idx}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-40px' }}
+            viewport={{ once: true, margin: '-20px' }}
             whileHover={{ y: -2, scale: 1.02 }}
             className="bg-mist/40 border border-mist p-3 hover:border-solder-copper transition-colors group block"
           >

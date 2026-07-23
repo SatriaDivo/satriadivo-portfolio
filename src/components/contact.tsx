@@ -15,7 +15,7 @@ export function Contact() {
       className="space-y-8 flex flex-col"
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: '-40px' }}
+      viewport={{ once: true, margin: '-20px' }}
     >
       <motion.p
         initial={{ opacity: 0, y: 12 }}

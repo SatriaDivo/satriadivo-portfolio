@@ -28,7 +28,7 @@ export function Hero() {
       {/* Name — split line */}
       <motion.h1
         variants={stagger} custom={1}
-        className="text-5xl sm:text-7xl font-bold tracking-tighter leading-none mb-4 font-display"
+        className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none mb-4 font-display"
       >
         {personalInfo.name.toUpperCase()}
         <motion.span

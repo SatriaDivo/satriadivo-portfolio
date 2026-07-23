@@ -21,7 +21,7 @@ export function Projects() {
           custom={idx}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
+          viewport={{ once: true, margin: '-20px' }}
           whileHover={{ y: -3, scale: 1.01 }}
           className="bg-mist/40 p-4 border border-mist hover:border-solder-copper transition-colors group cursor-default"
         >

@@ -13,7 +13,7 @@ export default function App() {
     <div className="min-h-screen bg-paper text-ink-circuit font-body flex flex-col">
       <NavBar />
 
-      <main className="max-w-4xl mx-auto px-6 sm:px-16 pt-12 pb-12 overflow-hidden sm:overflow-visible w-full flex-1">
+      <main className="max-w-4xl mx-auto px-4 sm:px-8 md:px-16 pt-8 sm:pt-12 pb-12 w-full flex-1">
         <div className="relative">
           {/* PCB Trace Line — animate from top on load */}
           <div className="hidden sm:block absolute left-[-40px] top-12 bottom-0 w-px bg-trace-green/20 z-0">
@@ -81,14 +81,14 @@ export default function App() {
       </main>
 
       {/* Footer */}
-      <footer className="px-6 sm:px-12 py-6 border-t border-mist flex flex-col sm:flex-row justify-between items-center bg-paper mt-auto gap-4">
+      <footer className="px-4 sm:px-8 py-5 sm:py-6 border-t border-mist flex flex-col sm:flex-row justify-between items-center bg-paper mt-auto gap-3 sm:gap-4">
         <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-trace-green animate-pulse" />
-          <p className="text-[9px] font-mono uppercase tracking-widest text-slate-node">
+          <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-trace-green animate-pulse shrink-0" />
+          <p className="text-[8px] sm:text-[9px] font-mono uppercase tracking-widest text-slate-node truncate max-w-[220px] sm:max-w-none">
             {personalInfo.name} — {personalInfo.role}
           </p>
         </div>
-        <p className="text-[9px] font-mono text-ink-circuit/40">
+        <p className="text-[8px] sm:text-[9px] font-mono text-ink-circuit/40">
           © {new Date().getFullYear()} — Embedded · AI · Cloud
         </p>
       </footer>
