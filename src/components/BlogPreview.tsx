@@ -33,20 +33,21 @@ export function BlogPreview() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-20px' }}
             transition={{ delay: idx * 0.08 }}
+            className="group/card"
           >
             <Link
               to={`/blog/${post.slug}`}
-              className="block bg-mist/30 border border-mist hover:border-solder-copper p-3 transition-colors group h-full"
+              className="block bg-mist/30 border border-mist hover:border-solder-copper p-3 transition-colors h-full"
             >
               <div className="flex items-center gap-2 mb-1.5">
                 <time className="font-mono text-[9px] text-trace-green">{post.date}</time>
                 <span className="text-[7px] font-mono text-slate-node bg-mist px-1 py-0.5">{detectCategory(post.title, post.summary).toUpperCase()}</span>
               </div>
-              <h3 className="font-display font-bold text-sm text-ink-circuit group-hover:text-solder-copper transition-colors leading-snug mb-1">
+              <h3 className="font-display font-bold text-sm text-ink-circuit group-hover/card:text-solder-copper transition-colors leading-snug mb-1">
                 {post.title}
               </h3>
               <p className="font-body text-xs text-ink-circuit/70 line-clamp-2">{post.summary}</p>
-              <span className="font-mono text-[9px] text-solder-copper mt-2 opacity-0 group-hover:opacity-100 transition-opacity inline-block">
+              <span className="font-mono text-[9px] text-solder-copper mt-2 opacity-0 group-hover/card:opacity-100 transition-opacity inline-block">
                 Read ↗
               </span>
             </Link>

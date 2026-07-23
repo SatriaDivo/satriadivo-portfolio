@@ -10,6 +10,7 @@ export function NavBar() {
 
   const links = [
     { label: 'Projects', href: '/#projects' },
+    { label: 'Awards', href: '/#achievements' },
     { label: 'Focus', href: '/#focus' },
     { label: 'Badges', href: '/#certifications' },
     { label: 'Blog', href: '/#blog' },
@@ -28,14 +29,14 @@ export function NavBar() {
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-mono font-bold text-xs sm:text-sm uppercase text-ink-circuit hover:text-solder-copper transition-colors truncate max-w-[60%] sm:max-w-none inline-block"
+          className="font-mono font-bold text-xs sm:text-sm uppercase text-ink-circuit hover:text-solder-copper transition-colors truncate max-w-[60%] sm:max-w-none inline-block shrink-0"
         >
-          <span className="hidden sm:inline">{personalInfo.name.toUpperCase()} / </span>
+          <span className="hidden lg:inline">{personalInfo.name.toUpperCase()} / </span>
           {personalInfo.role.toUpperCase()}
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden sm:flex gap-6 text-xs sm:text-sm uppercase tracking-widest font-semibold font-mono">
+        <nav className="hidden sm:flex gap-3 lg:gap-5 text-[11px] lg:text-xs uppercase tracking-widest font-semibold font-mono shrink-0">
           {links.map((link) => (
             <div key={link.label} className="relative group">
               <a

@@ -4,6 +4,7 @@ import { NavBar } from './components/NavBar';
 import { Section } from './components/Section';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
+import { Achievements } from './components/Achievements';
 import { BlogPreview } from './components/BlogPreview';
 import { Experience } from './components/Experience';
 import { FocusAreas } from './components/FocusAreas';
@@ -34,6 +35,10 @@ export default function App() {
 
           <Section id="projects" eyebrow="MODULES" title="Production Projects">
             <Projects />
+          </Section>
+
+          <Section id="achievements" eyebrow="AWARDS_LOG" title="Achievements & Publications">
+            <Achievements />
           </Section>
 
           <Section id="organization" eyebrow="ORG_LOG" title="Organizational Experience">

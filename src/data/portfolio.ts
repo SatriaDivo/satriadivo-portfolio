@@ -166,3 +166,36 @@ export const focusAreas = [
   "Networking & Security — CCNA-level, Firewall, VPN",
   "Web & Mobile Development — React, Next.js, Node.js, React Native, Flutter/Dart",
 ];
+
+export const achievements = [
+  {
+    id: "aitec-vi-2024",
+    title: "Juara di AITeC VI 2024",
+    category: "Competition",
+    date: "2024",
+    description:
+      "Meraih juara pada kompetisi AITeC VI 2024 dengan inovasi pertanian cerdas berbasis AI dan IoT — mewakili mahasiswa Jurusan Teknologi Informasi Politeknik Negeri Lampung.",
+    tags: ["AI", "IoT", "Smart Agriculture"],
+    url: "https://jti.polinela.ac.id/mahasiswa-jti-polinela-sabet-juara-di-aitec-vi-2024-dengan-inovasi-pertanian-cerdas-berbasis-ai-dan-iot/",
+  },
+  {
+    id: "trendx-journal",
+    title: "Publikasi Jurnal — TrendX Journal of Community Service",
+    category: "Publication",
+    date: "2025",
+    description:
+      "Co-author jurnal ilmiah \"Peningkatan Kesadaran Siswa Tentang Etika dan Perilaku Media Sosial di SMA Tri Sukses\" — dipublikasikan di TrendX (Journal of Community Service: Innovation and Technology Applications).",
+    tags: ["Research", "Digital Literacy", "Community Service"],
+    url: "https://ideanovation.org/journal/index.php/trendx/article/view/20",
+  },
+  {
+    id: "isc-2024",
+    title: "Student International Conference (ISC) 2024",
+    category: "Conference",
+    date: "2024",
+    description:
+      "Mewakili Politeknik Negeri Lampung dalam Student International Conference (ISC) 2024 — membuktikan diri di panggung global bersama tim Teknologi Rekayasa Internet.",
+    tags: ["International", "Conference", "Networking"],
+    url: "https://iet.polinela.ac.id/2024/12/19/dua-tim-teknologi-rekayasa-internet-wakili-polinela-buktikan-diri-di-panggung-global-melalui-student-international-conference-isc-2024/",
+  },
+];
