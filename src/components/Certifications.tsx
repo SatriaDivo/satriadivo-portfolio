@@ -14,7 +14,7 @@ export function Certifications() {
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {personalInfo.certificationBadges.map((badge, idx) => (
+        {personalInfo.certificationBadges.slice(0, 9).map((badge, idx) => (
           <motion.a
             key={badge.url}
             href={badge.url}
@@ -55,7 +55,7 @@ export function Certifications() {
         whileHover={{ x: 4 }}
         className="inline-flex items-center gap-1.5 text-[10px] font-mono font-bold text-trace-green hover:text-solder-copper transition-colors border-b border-dashed border-trace-green hover:border-solder-copper pb-0.5"
       >
-        Lihat semua 13 badge di Credly
+        Lihat semua {personalInfo.certificationBadges.length} badge di Credly
         <span className="text-xs">→</span>
       </motion.a>
     </div>

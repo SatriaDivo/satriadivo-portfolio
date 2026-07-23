@@ -9,11 +9,11 @@ export function NavBar() {
   const isHome = location.pathname === '/';
 
   const links = [
-    { label: 'Projects', href: '/#projects', isHash: true },
-    { label: 'Focus', href: '/#focus', isHash: true },
-    { label: 'Badges', href: '/#certifications', isHash: true },
-    { label: 'Blog', href: '/blog', isHash: false },
-    { label: 'Contact', href: '/#contact', isHash: true },
+    { label: 'Projects', href: '/#projects' },
+    { label: 'Focus', href: '/#focus' },
+    { label: 'Badges', href: '/#certifications' },
+    { label: 'Blog', href: '/#blog' },
+    { label: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -37,21 +37,12 @@ export function NavBar() {
         <nav className="hidden sm:flex gap-6 text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold font-mono">
           {links.map((link) => (
             <div key={link.label} className="relative group">
-              {link.isHash && isHome ? (
-                <a
-                  href={link.href.replace('/', '')}
-                  className="text-trace-green hover:text-solder-copper transition-colors"
-                >
-                  {link.label}
-                </a>
-              ) : (
-                <Link
-                  to={link.href}
-                  className="text-trace-green hover:text-solder-copper transition-colors"
-                >
-                  {link.label}
-                </Link>
-              )}
+              <a
+                href={link.href}
+                className="text-trace-green hover:text-solder-copper transition-colors"
+              >
+                {link.label}
+              </a>
               <motion.span
                 className="absolute -bottom-0.5 left-0 w-full h-px bg-solder-copper origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-250"
               />
@@ -59,7 +50,7 @@ export function NavBar() {
           ))}
         </nav>
 
-        {/* Burger button */}
+        {/* Burger */}
         <button
           onClick={() => setOpen(!open)}
           className="sm:hidden flex flex-col gap-1 p-1"
@@ -83,25 +74,14 @@ export function NavBar() {
           >
             <div className="px-4 py-4 flex flex-col gap-3">
               {links.map((link) => (
-                link.isHash && isHome ? (
-                  <a
-                    key={link.label}
-                    href={link.href.replace('/', '')}
-                    onClick={() => setOpen(false)}
-                    className="text-[11px] font-mono font-bold uppercase tracking-widest text-trace-green hover:text-solder-copper transition-colors py-1 border-b border-dashed border-mist"
-                  >
-                    {link.label}
-                  </a>
-                ) : (
-                  <Link
-                    key={link.label}
-                    to={link.href}
-                    onClick={() => setOpen(false)}
-                    className="text-[11px] font-mono font-bold uppercase tracking-widest text-trace-green hover:text-solder-copper transition-colors py-1 border-b border-dashed border-mist"
-                  >
-                    {link.label}
-                  </Link>
-                )
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="text-[11px] font-mono font-bold uppercase tracking-widest text-trace-green hover:text-solder-copper transition-colors py-1 border-b border-dashed border-mist"
+                >
+                  {link.label}
+                </a>
               ))}
             </div>
           </motion.nav>
