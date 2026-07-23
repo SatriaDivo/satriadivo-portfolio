@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #F7F5F0;
+  --color-ink-circuit: #1B2A22;
+  --color-trace-green: #2F6F4E;
+  --color-solder-copper: #C97D3B;
+  --color-slate-node: #3A4A63;
+  --color-mist: #E8E4DB;
+
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "Source Serif 4", serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-paper text-ink-circuit font-body antialiased selection:bg-trace-green selection:text-paper;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold text-ink-circuit;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-solder-copper ring-offset-2 ring-offset-paper;
+  }
+}
