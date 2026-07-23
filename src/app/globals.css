@@ -1,66 +1,54 @@
 @import "tailwindcss";
 
 /*
- * Design System: Circuit Board on Paper
- * Palet: Paper, Ink Circuit, Trace Green, Solder Copper, Slate Node, Mist
+ * Design System — Circuit Board on Paper
+ * Narasi: "papan sirkuit di atas kertas kerja"
+ * Merefleksikan latar belakang embedded + AI
  */
 
 @theme {
   /* — Color Tokens — */
-  --color-bg: #F3F4F6;
-  --color-card: #FFFFFF;
-  --color-ink-circuit: #1B2A22;
-  --color-trace-green: #2F6F4E;
-  --color-solder-copper: #C97D3B;
-  --color-slate-node: #3A4A63;
+  --color-paper: #F7F5F0;
+  --color-ink: #1B2A22;
+  --color-trace: #2F6F4E;
+  --color-copper: #C97D3B;
+  --color-slate: #3A4A63;
   --color-mist: #E8E4DB;
 
   /* — Typography — */
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-mono: var(--font-mono);
-
-  /* — Spacing Tokens — */
-  --spacing-section: 6rem;
-  --spacing-page-px: clamp(1.5rem, 5vw, 4rem);
 }
 
-/* — Base Styles — */
-
+/* — Base — */
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-ink-circuit);
+  background-color: var(--color-paper);
+  color: var(--color-ink);
   font-family: var(--font-body), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* — Accessibility & Selection — */
-
+/* — Focus — */
 *:focus-visible {
-  outline: 2px solid var(--color-solder-copper);
+  outline: 2px solid var(--color-copper);
   outline-offset: 4px;
 }
 
 ::selection {
-  background-color: var(--color-trace-green);
-  color: var(--color-bg);
+  background-color: var(--color-trace);
+  color: var(--color-paper);
 }
 
 /* — Reduced Motion — */
-
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
@@ -69,7 +57,6 @@ body {
 }
 
 /* — Typography Utilities — */
-
 .heading-display {
   font-family: var(--font-display), ui-sans-serif, system-ui, sans-serif;
   font-weight: 700;
