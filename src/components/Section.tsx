@@ -10,7 +10,7 @@ interface SectionProps {
 
 export function Section({ id, eyebrow, title, children }: SectionProps) {
   return (
-    <section id={id} className="relative pt-12 pb-12 scroll-mt-24 group">
+    <section id={id} className="relative pt-12 pb-12 scroll-mt-28 group">
       {/* PCB Trace Node / Solder Joint */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}

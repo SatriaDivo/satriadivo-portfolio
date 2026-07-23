@@ -27,6 +27,7 @@ export function NavBar() {
         {/* Logo */}
         <Link
           to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="font-mono font-bold text-[10px] sm:text-xs uppercase text-ink-circuit hover:text-solder-copper transition-colors truncate max-w-[60%] sm:max-w-none inline-block"
         >
           <span className="hidden sm:inline">{personalInfo.name.toUpperCase()} / </span>
