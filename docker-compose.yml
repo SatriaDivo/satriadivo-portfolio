@@ -1,11 +1,20 @@
 version: '3.8'
 
 services:
-  satriadivo-portfolio:
-    build:
+  portfolio:
+    # Membangun image dari Dockerfile di direktori saat ini
+    build: 
       context: .
       dockerfile: Dockerfile
-    container_name: satriadivo-portfolio
-    restart: always
+    
+    # Nama image dan container
+    image: satriadivo/portfolio:latest
+    container_name: dev_portfolio
+    
+    # Port mapping: host_port:container_port
+    # Nginx di dalam container mengekspos port 80
     ports:
-      - "3000:80" # Expose port 3000 di VPS -> port 80 di Nginx container
+      - "8080:80"
+    
+    # Supaya otomatis restart kalau VPS/Server reboot
+    restart: unless-stopped
