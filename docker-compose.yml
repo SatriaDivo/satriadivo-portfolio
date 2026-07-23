@@ -1,21 +1,11 @@
 version: '3.8'
 
 services:
-  portofolio-builder:
-    context: ./D:/Belajar/Projek/portofolio
-    build: .
-    stage: builder
+  satriadivo-portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: satriadivo-portfolio
+    restart: always
     ports:
-      - "3000:3000"
-    volumes:
-      - ./src:/app/src
-    environment:
-      - DISABLE_HMR=true
-
-  portofolio-nginx:
-    image: nginx:alpine
-    ports:
-      - "80:80"
-    volumes:
-      - ./dist:/usr/share/nginx/html
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - "3000:80" # Expose port 3000 di VPS -> port 80 di Nginx container
