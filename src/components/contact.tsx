@@ -22,7 +22,7 @@ export function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-ink-circuit/80 leading-relaxed max-w-xl text-sm font-body"
+        className="text-ink-circuit/80 leading-relaxed max-w-2xl text-base sm:text-lg font-body"
       >
         Tertarik untuk diskusi tentang arsitektur sistem, kolaborasi proyek, atau peluang profesional? Mari terhubung.
       </motion.p>
@@ -38,7 +38,7 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.35, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="text-sm border-b border-dashed border-trace-green py-1 flex justify-between font-mono transition-colors hover:border-solder-copper hover:text-solder-copper"
+            className="text-base sm:text-lg border-b border-dashed border-trace-green py-2 flex justify-between font-mono transition-colors hover:border-solder-copper hover:text-solder-copper"
             whileHover={{ x: 6 }}
           >
             <span className="font-bold">

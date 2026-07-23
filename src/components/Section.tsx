@@ -10,7 +10,7 @@ interface SectionProps {
 
 export function Section({ id, eyebrow, title, children }: SectionProps) {
   return (
-    <section id={id} className="relative pt-8 pb-8 scroll-mt-20 group">
+    <section id={id} className="relative pt-12 pb-12 scroll-mt-24 group">
       {/* PCB Trace Node / Solder Joint */}
       <motion.div
         initial={{ scale: 0, opacity: 0 }}
@@ -21,7 +21,7 @@ export function Section({ id, eyebrow, title, children }: SectionProps) {
       />
 
       <div className="mb-6">
-        <h2 className="text-[10px] font-mono uppercase tracking-[0.3em] text-trace-green mb-6">
+        <h2 className="text-xs sm:text-sm font-mono uppercase tracking-[0.3em] text-trace-green mb-8">
           {eyebrow} {title ? `— ${title}` : ''}
         </h2>
       </div>

@@ -26,19 +26,19 @@ export function Projects() {
           className="bg-mist/40 p-4 border border-mist hover:border-solder-copper transition-colors group cursor-default"
         >
           <div className="flex justify-between items-start mb-2 gap-2">
-            <h3 className="font-bold text-sm tracking-tight font-display text-ink-circuit uppercase">
+            <h3 className="font-bold text-base sm:text-lg tracking-tight font-display text-ink-circuit uppercase">
               {project.title}
             </h3>
             {project.tech.length > 0 && (
               <motion.span
-                className="text-[9px] font-mono bg-solder-copper text-white px-1.5 py-0.5 whitespace-nowrap rounded-sm"
+                className="text-[10px] sm:text-xs font-mono bg-solder-copper text-white px-2 py-0.5 whitespace-nowrap rounded-sm"
                 whileHover={{ scale: 1.05 }}
               >
                 {project.tech.slice(0, 2).join(' / ').toUpperCase()}
               </motion.span>
             )}
           </div>
-          <p className="text-xs text-ink-circuit/80 leading-relaxed font-body">
+          <p className="text-sm sm:text-base text-ink-circuit/80 leading-relaxed font-body">
             {project.description}
           </p>
 

@@ -161,5 +161,5 @@ export const focusAreas = [
   "AI & Machine Learning — Model development, TensorFlow Lite",
   "Cloud Computing & DevOps — AWS, Docker, Kubernetes, CI/CD",
   "Networking & Security — CCNA-level, Firewall, VPN",
-  "Web & Mobile Development — React, Next.js, Node.js, React Native",
+  "Web & Mobile Development — React, Next.js, Node.js, React Native, Flutter/Dart",
 ];

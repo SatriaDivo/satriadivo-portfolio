@@ -20,7 +20,7 @@ export function Hero() {
       {/* Eyebrow */}
       <motion.p
         variants={stagger} custom={0}
-        className="text-[10px] font-mono uppercase tracking-[0.2em] text-trace-green mb-2"
+        className="text-[12px] sm:text-xs font-mono uppercase tracking-[0.2em] text-trace-green mb-2"
       >
         {personalInfo.education}
       </motion.p>
@@ -28,7 +28,7 @@ export function Hero() {
       {/* Name — split line */}
       <motion.h1
         variants={stagger} custom={1}
-        className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tighter leading-none mb-4 font-display"
+        className="text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter leading-none mb-6 font-display"
       >
         {personalInfo.name.toUpperCase()}
         <motion.span
@@ -42,10 +42,10 @@ export function Hero() {
 
       {/* Badges */}
       <motion.div variants={stagger} custom={2} className="flex flex-wrap items-center gap-4 mb-6">
-        <span className="bg-slate-node text-white px-3 py-1 text-[10px] font-mono rounded">
+        <span className="bg-slate-node text-white px-3 py-1 text-xs font-mono rounded">
           {personalInfo.role.toUpperCase()} — {personalInfo.company.toUpperCase()}
         </span>
-        <span className="bg-mist text-ink-circuit px-3 py-1 text-[10px] font-mono rounded">
+        <span className="bg-mist text-ink-circuit px-3 py-1 text-xs font-mono rounded">
           AWS &amp; CCNA CERTIFIED
         </span>
       </motion.div>
@@ -53,13 +53,13 @@ export function Hero() {
       {/* Thesis */}
       <motion.p
         variants={stagger} custom={3}
-        className="text-xl md:text-2xl leading-tight max-w-2xl italic text-trace-green font-body"
+        className="text-2xl md:text-3xl leading-tight max-w-2xl italic text-trace-green font-body mb-6"
       >
         &ldquo;{personalInfo.thesis}&rdquo;
       </motion.p>
 
       {/* Location */}
-      <motion.p variants={stagger} custom={4} className="text-xs text-ink-circuit/60 font-mono">
+      <motion.p variants={stagger} custom={4} className="text-sm sm:text-base text-ink-circuit/60 font-mono">
         {personalInfo.location}
       </motion.p>
 
@@ -76,7 +76,7 @@ export function Hero() {
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className="text-sm border-b border-dashed border-trace-green py-1 flex justify-between font-mono transition-colors hover:border-solder-copper hover:text-solder-copper"
+            className="text-base border-b border-dashed border-trace-green py-1.5 flex justify-between font-mono transition-colors hover:border-solder-copper hover:text-solder-copper"
             whileHover={{ x: 4 }}
           >
             <span className="font-bold">

@@ -12,7 +12,7 @@ const itemVariants = {
 
 export function FocusAreas() {
   return (
-    <ul className="space-y-4 text-xs font-mono">
+    <ul className="space-y-5 text-sm sm:text-base font-mono">
       {focusAreas.map((area, idx) => (
         <motion.li
           key={area}
