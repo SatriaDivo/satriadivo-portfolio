@@ -1,12 +1,12 @@
-import { motion } from 'motion/react';
+import { motion, Variants } from 'motion/react';
 import { personalInfo } from '../data/portfolio';
 
-const stagger = {
+const stagger: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: 0.15 * i, ease: [0.16, 1, 0.3, 1] },
+    transition: { duration: 0.5, delay: 0.15 * i, ease: [0.16, 1, 0.3, 1] as const },
   }),
 };
 

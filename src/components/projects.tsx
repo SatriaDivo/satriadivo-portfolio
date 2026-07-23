@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { projects } from '../data/portfolio';
 
-const cardVariants = {
+const cardVariants: any = {
   hidden: { opacity: 0, y: 24, scale: 0.97 },
   visible: (i: number) => ({
     opacity: 1,
