@@ -14,6 +14,10 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     @apply bg-paper text-ink-circuit font-body antialiased selection:bg-trace-green selection:text-paper;
   }
