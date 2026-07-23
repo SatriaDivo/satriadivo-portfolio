@@ -28,14 +28,14 @@ export function NavBar() {
         <Link
           to="/"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="font-mono font-bold text-[10px] sm:text-xs uppercase text-ink-circuit hover:text-solder-copper transition-colors truncate max-w-[60%] sm:max-w-none inline-block"
+          className="font-mono font-bold text-xs sm:text-sm uppercase text-ink-circuit hover:text-solder-copper transition-colors truncate max-w-[60%] sm:max-w-none inline-block"
         >
           <span className="hidden sm:inline">{personalInfo.name.toUpperCase()} / </span>
           {personalInfo.role.toUpperCase()}
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden sm:flex gap-6 text-[10px] sm:text-[11px] uppercase tracking-widest font-semibold font-mono">
+        <nav className="hidden sm:flex gap-6 text-xs sm:text-sm uppercase tracking-widest font-semibold font-mono">
           {links.map((link) => (
             <div key={link.label} className="relative group">
               <a
