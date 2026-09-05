@@ -1,89 +1,94 @@
 import { motion, Variants } from 'motion/react';
 import { personalInfo } from '../data/portfolio';
+import { MapPin, ArrowRight } from 'lucide-react';
 
 const stagger: Variants = {
   hidden: { opacity: 0, y: 16 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, delay: 0.15 * i, ease: [0.16, 1, 0.3, 1] as const },
+    transition: { type: "spring", stiffness: 80, damping: 18, delay: 0.12 * i },
   }),
 };
 
 export function Hero() {
   return (
     <motion.div
-      className="space-y-6 pt-4 pb-4 relative flex flex-col"
+      className="flex flex-col gap-8 md:gap-12"
       initial="hidden"
       animate="visible"
     >
-      {/* Eyebrow */}
-      <motion.p
-        variants={stagger} custom={0}
-        className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.15em] sm:tracking-[0.2em] text-trace-green mb-2 leading-relaxed"
-      >
-        {personalInfo.education}
-      </motion.p>
+      <div className="flex flex-col max-w-3xl">
+        <motion.div variants={stagger} custom={0} className="flex items-center gap-2 mb-6">
+          <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+          <span className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-ink-secondary">
+            Available for new opportunities
+          </span>
+        </motion.div>
 
-      {/* Name — split line */}
-      <motion.h1
-        variants={stagger} custom={1}
-        className="text-4xl xs:text-5xl sm:text-7xl md:text-8xl font-bold tracking-tighter leading-none mb-4 sm:mb-6 font-display"
-      >
-        {personalInfo.name.toUpperCase()}
-        <motion.span
-          animate={{ opacity: [1, 0, 1] }}
-          transition={{ duration: 1.2, repeat: Infinity, repeatDelay: 3 }}
-          className="text-solder-copper ml-1 inline-block"
+        <motion.h1
+          variants={stagger} custom={1}
+          className="text-4xl sm:text-6xl md:text-7xl font-display font-bold tracking-tighter leading-[1.1] mb-6 text-ink-primary"
         >
-          _
-        </motion.span>
-      </motion.h1>
+          Bridging physical systems with intelligent data.
+        </motion.h1>
 
-      {/* Badges */}
-      <motion.div variants={stagger} custom={2} className="flex flex-wrap items-center gap-2 sm:gap-4 mb-4 sm:mb-6">
-        <span className="bg-slate-node text-white px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-mono rounded">
-          {personalInfo.role.toUpperCase()} — {personalInfo.company.toUpperCase()}
-        </span>
-        <span className="bg-mist text-ink-circuit px-2 sm:px-3 py-1 text-[10px] sm:text-xs font-mono rounded">
-          AWS &amp; CCNA CERTIFIED
-        </span>
-      </motion.div>
+        <motion.p
+          variants={stagger} custom={2}
+          className="text-lg sm:text-xl text-ink-secondary font-body leading-relaxed max-w-2xl mb-8"
+        >
+          I am a <strong className="text-ink-primary font-medium">Data Scientist & IoT Engineer</strong>. 
+          I build layered systems—from constrained firmware in embedded devices to scalable AI pipelines in the cloud.
+        </motion.p>
 
-      {/* Thesis */}
-      <motion.p
-        variants={stagger} custom={3}
-        className="text-lg sm:text-2xl md:text-3xl leading-tight max-w-2xl italic text-trace-green font-body mb-4 sm:mb-6"
-      >
-        &ldquo;{personalInfo.thesis}&rdquo;
-      </motion.p>
+        <motion.div variants={stagger} custom={3} className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm font-mono text-ink-muted mb-10">
+          <span className="flex items-center gap-1.5">
+            <MapPin size={14} />
+            {personalInfo.location}
+          </span>
+          <span className="hidden sm:inline text-border-subtle">|</span>
+          <span>AWS & CCNA Certified</span>
+          <span className="hidden sm:inline text-border-subtle">|</span>
+          <span>{personalInfo.company}</span>
+        </motion.div>
 
-      {/* Location */}
-      <motion.p variants={stagger} custom={4} className="text-sm sm:text-base text-ink-circuit/60 font-mono">
-        {personalInfo.location}
-      </motion.p>
-
-      {/* Links */}
-      <motion.div variants={stagger} custom={5} className="flex flex-col gap-2 pt-4 sm:pt-6 w-full max-w-xs">
-        {[
-          { label: 'GITHUB', href: personalInfo.github },
-          { label: 'LINKEDIN', href: personalInfo.linkedin },
-          { label: 'INSTAGRAM', href: personalInfo.instagram },
-          { label: 'YOUTUBE', href: personalInfo.youtube },
-        ].map((link) => (
-          <motion.a
-            key={link.label}
-            href={link.href}
+        <motion.div variants={stagger} custom={4} className="flex flex-wrap gap-4 items-center">
+          <a
+            href="#projects"
+            className="inline-flex items-center gap-2 bg-ink-primary text-white px-6 py-3 text-sm font-medium hover:bg-ink-secondary transition-colors"
+          >
+            View Selected Works
+            <ArrowRight size={16} />
+          </a>
+          <a
+            href={personalInfo.github}
             target="_blank"
             rel="noreferrer"
-            className="text-sm sm:text-base border-b border-dashed border-trace-green py-1.5 flex justify-between font-mono transition-colors hover:border-solder-copper hover:text-solder-copper"
-            whileHover={{ x: 4 }}
+            className="inline-flex items-center gap-2 bg-surface border border-border-subtle text-ink-primary px-6 py-3 text-sm font-medium hover:border-ink-muted transition-colors"
           >
-            <span className="font-bold">
-              {link.label}
+            GitHub Profile
+          </a>
+        </motion.div>
+      </div>
+
+      <motion.div
+        variants={stagger} custom={5}
+        className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 pt-8 sm:pt-12 border-t border-border-subtle mt-4"
+      >
+        {[
+          { label: 'Engineering Projects', value: personalInfo.stats.projects, suffix: '+' },
+          { label: 'Verified Badges', value: personalInfo.stats.certifications, suffix: '' },
+          { label: 'Publications', value: personalInfo.stats.publications, suffix: '' },
+          { label: 'Years Experience', value: personalInfo.stats.experience, suffix: '+' },
+        ].map((stat) => (
+          <div key={stat.label} className="flex flex-col gap-1">
+            <span className="text-3xl sm:text-4xl font-display font-bold text-ink-primary tracking-tight tabular-nums">
+              {stat.value}{stat.suffix}
             </span>
-            <span>↗</span>
-          </motion.a>
+            <span className="text-[10px] sm:text-xs font-mono text-ink-secondary uppercase tracking-wider">
+              {stat.label}
+            </span>
+          </div>
         ))}
       </motion.div>
     </motion.div>

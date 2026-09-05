@@ -2,8 +2,8 @@ export const personalInfo = {
   name: "Satria Divo Praditya",
   role: "Data Scientist Intern",
   company: "PT Makerindo Prima Solusi",
-  education: "D4 Teknologi Rekayasa Internet — Politeknik Negeri Lampung (2023–Sekarang)",
-  location: "DSN Serbajadi, Pemanggilan, Natar, Lampung Selatan, Lampung",
+  education: "B.App.Sc in Internet Engineering Technology — Lampung State Polytechnic (2023–Present)",
+  location: "Lampung Selatan, Lampung, Indonesia",
   phone: "+62 895 3232 3162 4",
   thesis: "Saya membangun sistem berlapis — dari firmware sampai AI pipeline.",
   github: "https://github.com/satriaDivo",
@@ -11,6 +11,40 @@ export const personalInfo = {
   instagram: "https://www.instagram.com/satriadivoo",
   youtube: "https://www.youtube.com/@SatriaDivo1",
   email: "satriadivop354@gmail.com",
+  stats: {
+    projects: 7,
+    certifications: 14,
+    publications: 1,
+    experience: 1,
+  },
+  skills: [
+    { name: "Python", level: 85, category: "Language" },
+    { name: "TypeScript", level: 75, category: "Language" },
+    { name: "C/C++", level: 70, category: "Language" },
+    { name: "JavaScript", level: 78, category: "Language" },
+    { name: "Dart", level: 65, category: "Language" },
+    { name: "TensorFlow", level: 75, category: "AI/ML" },
+    { name: "Computer Vision", level: 70, category: "AI/ML" },
+    { name: "Data Analysis", level: 80, category: "AI/ML" },
+    { name: "Model Deployment", level: 72, category: "AI/ML" },
+    { name: "ESP32/Arduino", level: 78, category: "Embedded" },
+    { name: "IoT Systems", level: 80, category: "Embedded" },
+    { name: "React/Next.js", level: 75, category: "Web & Mobile" },
+    { name: "Node.js", level: 72, category: "Web & Mobile" },
+    { name: "Flutter (Mobile & Desktop)", level: 75, category: "Web & Mobile" },
+    { name: "Docker", level: 70, category: "DevOps" },
+    { name: "CI/CD", level: 68, category: "DevOps" },
+    { name: "Linux", level: 78, category: "DevOps" },
+    { name: "AWS", level: 75, category: "Cloud" },
+    { name: "GCP (Google Cloud)", level: 70, category: "Cloud" },
+    { name: "Networking (CCNA)", level: 80, category: "Infrastructure" },
+    { name: "SQL/MySQL", level: 72, category: "Data" },
+    { name: "PostgreSQL", level: 75, category: "Data" },
+    { name: "MongoDB", level: 70, category: "Data" },
+    { name: "InfluxDB (TSDB)", level: 75, category: "Data" },
+    { name: "Node-RED", level: 75, category: "Embedded" },
+    { name: "Git", level: 82, category: "Tooling" },
+  ],
   certifications: [
     "AWS Cloud Architecting",
     "AWS Cloud Foundations",
@@ -24,6 +58,7 @@ export const personalInfo = {
     "Ethical Hacker",
     "Introduction to IoT",
     "IT Essentials",
+    "MTCNA (MikroTik Certified Network Associate)",
     "Python Essentials 1",
   ],
   certificationBadges: [
@@ -88,6 +123,11 @@ export const personalInfo = {
       url: "https://www.credly.com/badges/cc1fc634-5a85-4996-b931-03b98237500f/public_url",
     },
     {
+      name: "MTCNA (MikroTik Certified Network Associate)",
+      issuer: "MikroTik",
+      url: "https://mikrotik.com/certificates",
+    },
+    {
       name: "Python Essentials 1",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/69efefcd-9f28-4d79-a1aa-e9b29ab9bd96/public_url",
@@ -114,7 +154,7 @@ export const organization = [
     role: "Wakil Gubernur",
     org: "Lembaga Eksekutif Mahasiswa",
     department: "Jurusan Teknologi Informasi",
-    institution: "Politeknik Negeri Lampung",
+    institution: "Lampung State Polytechnic",
     period: "Maret 2025 – Maret 2026",
     highlights: [
       "Merumuskan keputusan strategis bersama Gubernur untuk arah kebijakan dan pengelolaan lembaga",
@@ -135,6 +175,8 @@ export const projects = [
     tech: ["AI/ML", "Data Synthesis", "Python"],
     description:
       "Kontribusi analisis data sintetis untuk mendukung pembuatan model AI pada proyek HERA (Heavy Element Risk Analyzer).",
+    url: "https://103.217.145.187/",
+    image: "/hera.png",
   },
   {
     id: "agrisense",
@@ -142,13 +184,17 @@ export const projects = [
     tech: ["AI/ML", "Data Analysis", "Python"],
     description:
       "Kontribusi menganalisis data pada proyek AgriSense untuk kebutuhan pengembangan model AI.",
+    url: "https://agrisense.web.id/",
+    image: "/agrisense.png",
   },
   {
     id: "elogbook",
     title: "E-Logbook",
-    tech: ["C/C++", "FreeRTOS", "ESP32", "State Machine"],
+    tech: ["AI/ML", "Computer Vision", "C/C++", "ESP32", "LoRa"],
     description:
-      "Pembuat model klasifikasi AI untuk E-Logbook. E-logbook monitoring perikanan dengan state machine 5-state non-blocking, ring buffer TX queue, ACK/retry logic, komunikasi Serial1 via MAX3232 ke DTU.",
+      "Pembuat model Computer Vision berbasis klasifikasi famili ikan untuk E-Logbook. Sistem ini dipadukan dengan IoT monitoring perikanan berarsitektur LoRa (TTGO ESP32), menggunakan komunikasi Transceiver di kapal dan Receiver di pelabuhan (Edge device) yang dilengkapi non-blocking state machine, ring buffer TX queue, serta ACK/retry logic.",
+    url: "https://elogbookipb.web.id/",
+    image: "/elogbook.png",
   },
   {
     id: "cocoasense",
@@ -156,6 +202,35 @@ export const projects = [
     tech: ["Computer Vision", "AI/ML", "Python"],
     description:
       "Person in Charge (PIC) proyek identifikasi kematangan & kondisi biji kakao. Role management tiga tingkat: Petani, Koperasi, Admin — dengan flow pengajuan akses.",
+    url: "http://cocoasense.web.id/",
+    image: "/cocoasense.png",
+  },
+  {
+    id: "iotkit-studio",
+    title: "IoTKit-Studio",
+    tech: ["Go", "Next.js", "MQTT", "WebSocket"],
+    description:
+      "Platform simulasi IoT no-code untuk merakit payload JSON secara visual, injeksi anomali (Chaos Engineering), dan testing protokol real-time. Dibangun dengan arsitektur dual-backend (Go & Node.js).",
+    url: "https://github.com/SatriaDivo/IoTKit-Studio",
+    image: "/iotkit.png",
+  },
+  {
+    id: "codevault",
+    title: "CodeVault",
+    tech: ["Tauri", "Rust", "React", "TypeScript"],
+    description:
+      "Aplikasi desktop workspace manager untuk menganalisis dan membersihkan direktori proyek developer. Dibangun menggunakan Tauri dan Rust untuk performa native, mendeteksi cache berat (Node, Python, Rust, Flutter) guna menghemat storage.",
+    url: "https://github.com/SatriaDivo/CodeVault",
+    image: "/codevault.png",
+  },
+  {
+    id: "ruangstok",
+    title: "RuangStok",
+    tech: ["Google Apps Script", "Google Sheets", "JavaScript"],
+    description:
+      "Sistem manajemen inventori ringan berbasis cloud. Dibangun secara serverless memanfaatkan Google Apps Script sebagai backend eksekusi logika dan Google Sheets sebagai database.",
+    url: "https://github.com/SatriaDivo/RuangStok",
+    image: "/ruangstok.png",
   },
 ];
 
@@ -174,7 +249,7 @@ export const achievements = [
     category: "Competition",
     date: "2024",
     description:
-      "Meraih juara pada kompetisi AITeC VI 2024 dengan inovasi pertanian cerdas berbasis AI dan IoT — mewakili mahasiswa Jurusan Teknologi Informasi Politeknik Negeri Lampung.",
+      "Meraih juara pada kompetisi AITeC VI 2024 dengan inovasi pertanian cerdas berbasis AI dan IoT — mewakili mahasiswa Jurusan Teknologi Informasi Lampung State Polytechnic.",
     tags: ["AI", "IoT", "Smart Agriculture"],
     url: "https://jti.polinela.ac.id/mahasiswa-jti-polinela-sabet-juara-di-aitec-vi-2024-dengan-inovasi-pertanian-cerdas-berbasis-ai-dan-iot/",
   },
@@ -194,7 +269,7 @@ export const achievements = [
     category: "Conference",
     date: "2024",
     description:
-      "Mewakili Politeknik Negeri Lampung dalam Student International Conference (ISC) 2024 — membuktikan diri di panggung global bersama tim Teknologi Rekayasa Internet.",
+      "Mewakili Lampung State Polytechnic dalam Student International Conference (ISC) 2024 — membuktikan diri di panggung global bersama tim Internet Engineering Technology.",
     tags: ["International", "Conference", "Networking"],
     url: "https://iet.polinela.ac.id/2024/12/19/dua-tim-teknologi-rekayasa-internet-wakili-polinela-buktikan-diri-di-panggung-global-melalui-student-international-conference-isc-2024/",
   },

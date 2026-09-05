@@ -3,7 +3,6 @@ import { personalInfo } from '../data/portfolio';
 
 export function Contact() {
   const links = [
-    { label: 'EMAIL', href: `mailto:${personalInfo.email}` },
     { label: 'GITHUB', href: personalInfo.github },
     { label: 'LINKEDIN', href: personalInfo.linkedin },
     { label: 'INSTAGRAM', href: personalInfo.instagram },
@@ -12,41 +11,58 @@ export function Contact() {
 
   return (
     <motion.div
-      className="space-y-8 flex flex-col"
+      className="flex flex-col md:flex-row gap-12 md:gap-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: '-20px' }}
     >
-      <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-ink-circuit/80 leading-relaxed max-w-2xl text-base sm:text-lg font-body"
-      >
-        Tertarik untuk diskusi tentang arsitektur sistem, kolaborasi proyek, atau peluang profesional? Mari terhubung.
-      </motion.p>
+      <div className="md:w-1/2">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 80, damping: 18 }}
+          className="text-ink-secondary leading-relaxed text-base sm:text-lg font-body mb-8"
+        >
+          Interested in discussing system architecture, project collaboration, or professional opportunities? Let's connect.
+        </motion.p>
 
-      <div className="flex flex-col gap-2 max-w-xs">
-        {links.map((link, i) => (
-          <motion.a
-            key={link.label}
-            href={link.href}
-            target={link.href.startsWith('mailto') ? undefined : '_blank'}
-            rel="noreferrer"
-            initial={{ opacity: 0, x: -12 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.35, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="text-base sm:text-lg border-b border-dashed border-trace-green py-2 flex justify-between font-mono transition-colors hover:border-solder-copper hover:text-solder-copper"
-            whileHover={{ x: 6 }}
-          >
-            <span className="font-bold">
-              {link.label}
-            </span>
-            <motion.span whileHover={{ x: 2 }}>↗</motion.span>
-          </motion.a>
-        ))}
+        <motion.a
+          href={`mailto:${personalInfo.email}`}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.1 }}
+          className="inline-flex items-center justify-center bg-ink-primary text-white px-8 py-4 text-sm font-medium hover:bg-ink-secondary transition-colors"
+        >
+          Send an Email
+        </motion.a>
+      </div>
+
+      <div className="md:w-1/2 flex flex-col gap-4">
+        <h4 className="font-mono text-xs font-bold text-ink-muted uppercase tracking-[0.2em] mb-2">
+          SOCIALS & LINKS
+        </h4>
+        <div className="flex flex-col gap-0 border-y border-border-subtle">
+          {links.map((link, i) => (
+            <motion.a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, x: -12 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ type: "spring", stiffness: 80, damping: 18, delay: i * 0.05 }}
+              className="group text-sm font-mono flex items-center justify-between py-4 border-b border-border-subtle last:border-0 hover:pl-4 transition-all"
+            >
+              <span className="font-medium text-ink-primary group-hover:text-accent transition-colors">
+                {link.label}
+              </span>
+              <span className="text-ink-muted group-hover:text-accent transition-colors">↗</span>
+            </motion.a>
+          ))}
+        </div>
       </div>
     </motion.div>
   );

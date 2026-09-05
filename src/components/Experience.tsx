@@ -1,53 +1,76 @@
 import { motion } from 'motion/react';
-import { organization } from '../data/portfolio';
+import { experience, organization } from '../data/portfolio';
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] as const },
-  }),
-};
+function TimelineItem({
+  role,
+  company,
+  period,
+  highlights,
+  idx,
+}: {
+  role: string;
+  company: string;
+  period: string;
+  highlights: string[];
+  idx: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{ type: "spring", stiffness: 100, damping: 20, delay: idx * 0.1 }}
+      className="flex flex-col md:flex-row gap-4 md:gap-12 py-8 border-t border-border-subtle first:border-0 first:pt-0"
+    >
+      <div className="md:w-1/4 shrink-0">
+        <span className="font-mono text-xs text-ink-muted uppercase tracking-widest block mb-2">
+          {period}
+        </span>
+      </div>
+
+      <div className="md:w-3/4">
+        <h3 className="font-display font-bold text-lg sm:text-xl text-ink-primary tracking-tight mb-1">
+          {role}
+        </h3>
+        <span className="font-mono text-sm text-ink-secondary mb-4 block">
+          {company}
+        </span>
+
+        <ul className="space-y-3 font-body text-sm sm:text-base text-ink-secondary">
+          {highlights.map((point, i) => (
+            <li key={i} className="flex gap-3 leading-relaxed">
+              <span className="text-ink-muted shrink-0 text-[10px] mt-1.5 font-mono">/</span>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </motion.div>
+  );
+}
 
 export function Experience() {
+  const items = [
+    ...experience.map((e) => ({
+      role: e.role,
+      company: e.company,
+      period: e.period,
+      highlights: e.highlights,
+    })),
+    ...organization.map((o) => ({
+      role: o.role,
+      company: `${o.org} — ${o.department}`,
+      period: o.period,
+      highlights: o.highlights,
+    })),
+  ];
+
+  if (items.length === 0) return null;
+
   return (
-    <div className="space-y-12">
-      {organization.map((org, idx) => (
-        <motion.div
-          key={org.role + org.org}
-          variants={itemVariants}
-          custom={idx}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-20px' }}
-          className="relative pl-6 sm:pl-8 border-l border-mist"
-        >
-          {/* Timeline Dot */}
-          <div className="absolute left-[-5px] top-1.5 w-2 h-2 rounded-full bg-solder-copper" />
-
-          <div className="mb-4">
-            <h3 className="font-display font-bold text-lg sm:text-xl text-ink-circuit uppercase tracking-tight">
-              {org.org}
-            </h3>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-xs sm:text-sm font-mono text-trace-green mt-1">
-              <span className="font-bold">{org.role}</span>
-              <span className="hidden sm:inline text-mist">•</span>
-              <span>{org.department}</span>
-              <span className="hidden sm:inline text-mist">•</span>
-              <span className="text-ink-circuit/60">{org.period}</span>
-            </div>
-          </div>
-
-          <ul className="space-y-2 text-sm sm:text-base font-body text-ink-circuit/80">
-            {org.highlights.map((point, i) => (
-              <li key={i} className="flex gap-3">
-                <span className="text-solder-copper shrink-0 mt-1.5 text-[8px]">▶</span>
-                <span>{point}</span>
-              </li>
-            ))}
-          </ul>
-        </motion.div>
+    <div className="flex flex-col">
+      {items.map((item, idx) => (
+        <TimelineItem key={item.role + item.company} {...item} idx={idx} />
       ))}
     </div>
   );

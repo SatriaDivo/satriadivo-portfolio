@@ -1,79 +1,62 @@
 import { motion } from 'motion/react';
 import { achievements } from '../data/portfolio';
+import { Trophy, FileText, Globe } from 'lucide-react';
 
-const CATEGORY_ICONS: Record<string, string> = {
-  Competition: '🏆',
-  Publication: '📄',
-  Conference: '🌐',
-};
-
-const cardVariants: any = {
-  hidden: { opacity: 0, y: 24, scale: 0.97 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: { duration: 0.5, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] },
-  }),
+const CATEGORY_ICONS: Record<string, React.ReactNode> = {
+  Competition: <Trophy size={16} className="text-ink-primary" strokeWidth={2} />,
+  Publication: <FileText size={16} className="text-ink-primary" strokeWidth={2} />,
+  Conference: <Globe size={16} className="text-ink-primary" strokeWidth={2} />,
 };
 
 export function Achievements() {
   return (
-    <div className="space-y-4">
+    <div className="flex flex-col gap-4">
       {achievements.map((item, idx) => (
         <motion.a
           key={item.id}
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
-          variants={cardVariants}
-          custom={idx}
-          initial="hidden"
-          whileInView="visible"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-20px' }}
-          whileHover={{ y: -3, scale: 1.01 }}
-          className="block bg-mist/40 p-4 sm:p-5 border border-mist hover:border-solder-copper transition-colors group cursor-pointer"
+          transition={{ type: "spring", stiffness: 100, damping: 20, delay: idx * 0.1 }}
+          className="group flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-8 p-6 bg-surface border border-border-subtle hover:border-ink-primary transition-colors"
         >
-          {/* Top row: category + date */}
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="text-base sm:text-lg">
-                {CATEGORY_ICONS[item.category] || '📌'}
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-mono font-bold text-white bg-trace-green px-2 py-0.5 uppercase tracking-wider">
-                {item.category}
-              </span>
+          <div className="flex flex-row sm:flex-col items-center sm:items-start justify-between sm:justify-start gap-2 sm:w-1/4 shrink-0">
+            <div className="flex items-center gap-2 text-xs font-mono text-ink-secondary uppercase tracking-widest">
+              {CATEGORY_ICONS[item.category] || <FileText size={16} />}
+              {item.category}
             </div>
-            <span className="text-[10px] sm:text-xs font-mono text-slate-node">
+            <span className="text-xs font-mono text-ink-muted">
               {item.date}
             </span>
           </div>
 
-          {/* Title */}
-          <h3 className="font-display font-bold text-sm sm:text-base text-ink-circuit group-hover:text-solder-copper transition-colors leading-snug mb-2 uppercase tracking-tight">
-            {item.title}
-          </h3>
+          <div className="flex flex-col sm:w-3/4">
+            <h3 className="font-display font-bold text-lg sm:text-xl text-ink-primary group-hover:text-accent transition-colors tracking-tight mb-2">
+              {item.title}
+            </h3>
 
-          {/* Description */}
-          <p className="text-xs sm:text-sm text-ink-circuit/80 leading-relaxed font-body mb-3">
-            {item.description}
-          </p>
+            <p className="text-sm sm:text-base text-ink-secondary leading-relaxed font-body mb-4">
+              {item.description}
+            </p>
 
-          {/* Tags + Link */}
-          <div className="flex items-center justify-between gap-2 flex-wrap">
-            <div className="flex flex-wrap gap-1.5">
-              {item.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-[8px] sm:text-[9px] font-mono text-slate-node bg-mist px-1.5 py-0.5"
-                >
-                  {tag}
-                </span>
-              ))}
+            <div className="flex flex-wrap items-center justify-between gap-4 mt-auto">
+              <div className="flex flex-wrap gap-2">
+                {item.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-[10px] font-mono font-medium text-ink-secondary uppercase tracking-wider bg-paper border border-border-subtle px-2 py-0.5"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <span className="font-mono text-xs text-ink-muted group-hover:text-accent transition-colors">
+                VIEW DETAIL ↗
+              </span>
             </div>
-            <span className="font-mono text-[9px] sm:text-[10px] text-solder-copper opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-              Baca selengkapnya ↗
-            </span>
           </div>
         </motion.a>
       ))}

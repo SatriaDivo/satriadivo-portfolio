@@ -1,63 +1,41 @@
 import { motion } from 'motion/react';
 import { personalInfo } from '../data/portfolio';
 
-const badgeVariants = {
-  hidden: { opacity: 0, scale: 0.92 },
-  visible: (i: number) => ({
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.35, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
-
 export function Certifications() {
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        {personalInfo.certificationBadges.slice(0, 9).map((badge, idx) => (
+    <div className="flex flex-col gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        {personalInfo.certificationBadges.map((badge, idx) => (
           <motion.a
             key={badge.url}
             href={badge.url}
             target="_blank"
             rel="noreferrer"
-            variants={badgeVariants}
-            custom={idx}
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-20px' }}
-            whileHover={{ y: -2, scale: 1.02 }}
-            className="bg-mist/40 border border-mist p-4 hover:border-solder-copper transition-colors group block"
+            transition={{ type: "spring", stiffness: 100, damping: 20, delay: idx * 0.05 }}
+            className="group flex flex-col justify-between p-5 border border-border-subtle bg-surface hover:border-ink-primary transition-colors"
           >
-            <p className="text-[11px] sm:text-xs font-mono font-bold text-ink-circuit uppercase leading-tight mb-1.5 group-hover:text-trace-green transition-colors">
-              {badge.name}
-            </p>
-            <p className="text-[9px] sm:text-[10px] font-mono text-slate-node uppercase tracking-wider">
-              {badge.issuer}
-            </p>
-            <motion.span
-              className="text-[9px] sm:text-[10px] font-mono text-solder-copper mt-2 inline-block"
-              whileHover={{ x: 2 }}
-            >
-              credly ↗
-            </motion.span>
+            <div>
+              <p className="text-xs sm:text-sm font-mono font-medium text-ink-primary leading-tight mb-2 group-hover:text-accent transition-colors">
+                {badge.name}
+              </p>
+              <p className="text-[10px] sm:text-xs font-mono text-ink-secondary">
+                {badge.issuer}
+              </p>
+            </div>
+            <div className="mt-6 flex justify-between items-center">
+              <span className="text-[10px] font-mono font-bold text-ink-muted group-hover:text-ink-primary transition-colors">
+                VERIFIED BADGE
+              </span>
+              <span className="text-xs font-mono text-ink-muted group-hover:text-accent transition-colors">
+                ↗
+              </span>
+            </div>
           </motion.a>
         ))}
       </div>
-
-      <motion.a
-        href="https://www.credly.com/users/satria-divo-praditya/badges/credly"
-        target="_blank"
-        rel="noreferrer"
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.3 }}
-        whileHover={{ x: 4 }}
-        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-mono font-bold text-trace-green hover:text-solder-copper transition-colors border-b border-dashed border-trace-green hover:border-solder-copper pb-0.5"
-      >
-        Lihat semua {personalInfo.certificationBadges.length} badge di Credly
-        <span className="text-xs">→</span>
-      </motion.a>
     </div>
   );
 }

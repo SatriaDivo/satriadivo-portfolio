@@ -9,7 +9,7 @@ import './index.css';
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-      <div className="min-h-screen bg-paper text-ink-circuit font-body flex flex-col">
+      <div className="min-h-screen bg-paper text-ink-primary font-body flex flex-col">
         <Routes>
           {/* Main Portfolio */}
           <Route path="/" element={<App />} />

@@ -1,80 +1,96 @@
-import { motion } from 'motion/react';
+import { motion, useScroll, useSpring } from 'motion/react';
 import { personalInfo } from './data/portfolio';
 import { NavBar } from './components/NavBar';
 import { Section } from './components/Section';
 import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
 import { Achievements } from './components/Achievements';
-import { BlogPreview } from './components/BlogPreview';
 import { Experience } from './components/Experience';
+import { BlogPreview } from './components/BlogPreview';
 import { FocusAreas } from './components/FocusAreas';
 import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
 
+function ScrollTop() {
+  const { scrollYProgress } = useScroll();
+  const scaleY = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
+
+  return (
+    <motion.button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-ink-primary text-white flex items-center justify-center shadow-lg hover:bg-ink-secondary transition-colors"
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+    >
+      <svg className="absolute inset-0 -rotate-90" width="40" height="40" viewBox="0 0 40 40">
+        <motion.circle
+          cx="20" cy="20" r="18"
+          fill="none" stroke="var(--color-border-subtle)"
+          strokeWidth="2"
+          strokeLinecap="round"
+          style={{ pathLength: scaleY }}
+        />
+      </svg>
+      <span className="relative text-sm font-mono">↑</span>
+    </motion.button>
+  );
+}
+
 export default function App() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col bg-paper selection:bg-ink-primary selection:text-white">
       <NavBar />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-8 md:px-16 pt-8 sm:pt-12 pb-12 w-full flex-1">
-        <div className="relative">
-          {/* PCB Trace Line */}
-          <div className="hidden sm:block absolute left-[-40px] top-12 bottom-0 w-px bg-trace-green/20 z-0">
-            <motion.div
-              className="absolute top-0 w-full bg-trace-green/40 origin-top"
-              initial={{ scaleY: 0 }}
-              animate={{ scaleY: 1 }}
-              transition={{ duration: 2.0, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              style={{ height: '100%' }}
-            />
-          </div>
-
-          <Section id="init" eyebrow="SYS_INIT">
+      <main className="max-w-5xl mx-auto px-6 sm:px-12 md:px-20 pt-16 sm:pt-24 pb-20 w-full flex-1">
+        <div className="flex flex-col gap-24 sm:gap-32">
+          <Section id="init" className="pt-0">
             <Hero />
           </Section>
 
-          <Section id="projects" eyebrow="MODULES" title="Production Projects">
+          <Section id="projects" eyebrow="01" title="Selected Works">
             <Projects />
           </Section>
 
-          <Section id="achievements" eyebrow="AWARDS_LOG" title="Achievements & Publications">
-            <Achievements />
-          </Section>
-
-          <Section id="organization" eyebrow="ORG_LOG" title="Organizational Experience">
-            <Experience />
-          </Section>
-
-          <Section id="focus" eyebrow="CORE_AREAS" title="Technical Focus">
+          <Section id="focus" eyebrow="02" title="Technical Focus">
             <FocusAreas />
           </Section>
 
-          <Section id="certifications" eyebrow="CERTIFICATIONS" title="Verified Badges">
+          <Section id="experience" eyebrow="03" title="Experience">
+            <Experience />
+          </Section>
+
+          <Section id="achievements" eyebrow="04" title="Achievements">
+            <Achievements />
+          </Section>
+
+          <Section id="certifications" eyebrow="05" title="Verified Badges">
             <Certifications />
           </Section>
 
-          <Section id="blog" eyebrow="TECHNICAL_WRITINGS" title="Recent Posts">
+          <Section id="blog" eyebrow="06" title="Technical Writings">
             <BlogPreview />
           </Section>
 
-          <Section id="contact" eyebrow="END_PROCESS" title="Connect">
+          <Section id="contact" eyebrow="07" title="Connect">
             <Contact />
           </Section>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="px-4 sm:px-8 py-5 sm:py-6 border-t border-mist flex flex-col sm:flex-row justify-between items-center bg-paper mt-auto gap-3 sm:gap-4">
-        <div className="flex items-center gap-2">
-          <div className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-trace-green animate-pulse shrink-0" />
-          <p className="text-[8px] sm:text-[9px] font-mono uppercase tracking-widest text-slate-node truncate max-w-[220px] sm:max-w-none">
+      <footer className="px-6 sm:px-12 py-8 border-t border-border-subtle flex flex-col sm:flex-row justify-between items-center bg-surface mt-auto gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
+          <p className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-ink-secondary">
             {personalInfo.name} — {personalInfo.role}
           </p>
         </div>
-        <p className="text-[8px] sm:text-[9px] font-mono text-ink-circuit/40">
-          © {new Date().getFullYear()} — Embedded · AI · Cloud
+        <p className="text-[10px] sm:text-xs font-mono text-ink-muted">
+          © {new Date().getFullYear()} — Engineering & Data Science
         </p>
       </footer>
-    </>
+
+      <ScrollTop />
+    </div>
   );
 }

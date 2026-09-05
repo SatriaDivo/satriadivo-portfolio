@@ -3,28 +3,29 @@ import { ReactNode } from 'react';
 
 interface SectionProps {
   id: string;
-  eyebrow: string;
+  eyebrow?: string;
   title?: string;
   children: ReactNode;
+  className?: string;
 }
 
-export function Section({ id, eyebrow, title, children }: SectionProps) {
+export function Section({ id, eyebrow, title, children, className = '' }: SectionProps) {
   return (
-    <section id={id} className="relative pt-12 pb-12 scroll-mt-28 group">
-      {/* PCB Trace Node / Solder Joint */}
-      <motion.div
-        initial={{ scale: 0, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        viewport={{ once: true, margin: "-20px" }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        className="hidden sm:block absolute left-[-44px] top-[38px] w-2 h-2 rounded-full bg-solder-copper shadow-[0_0_8px_var(--color-solder-copper)] z-10"
-      />
-
-      <div className="mb-6">
-        <h2 className="text-xs sm:text-sm font-mono uppercase tracking-[0.3em] text-trace-green mb-8">
-          {eyebrow} {title ? `— ${title}` : ''}
-        </h2>
-      </div>
+    <section id={id} className={`relative scroll-mt-24 group ${className}`}>
+      {(eyebrow || title) && (
+        <div className="mb-10 sm:mb-12 border-b border-border-subtle pb-4 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6">
+          {eyebrow && (
+            <h2 className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] text-ink-muted">
+              {eyebrow}
+            </h2>
+          )}
+          {title && (
+            <h3 className="text-xl sm:text-2xl font-display font-bold text-ink-primary tracking-tight">
+              {title}
+            </h3>
+          )}
+        </div>
+      )}
 
       <div>{children}</div>
     </section>

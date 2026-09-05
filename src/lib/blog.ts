@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 // Mengambil semua file markdown di folder blog
 const markdownFiles = import.meta.glob('../content/blog/*.md', { query: '?raw', import: 'default', eager: true });
 

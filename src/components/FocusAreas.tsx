@@ -1,44 +1,50 @@
 import { motion } from 'motion/react';
-import { focusAreas } from '../data/portfolio';
-
-const itemVariants = {
-  hidden: { opacity: 0, x: -16 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.4, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] },
-  }),
-};
+import { personalInfo } from '../data/portfolio';
 
 export function FocusAreas() {
+  // Group skills by category
+  const groupedSkills = personalInfo.skills.reduce((acc, skill) => {
+    if (!acc[skill.category]) acc[skill.category] = [];
+    acc[skill.category].push(skill.name);
+    return acc;
+  }, {} as Record<string, string[]>);
+
+  // Define preferred rendering order
+  const orderedCategories = [
+    'AI/ML',
+    'Embedded',
+    'Cloud',
+    'Infrastructure',
+    'Language',
+    'Web & Mobile',
+    'Data',
+    'DevOps',
+    'Tooling'
+  ];
+
   return (
-    <ul className="space-y-5 text-sm sm:text-base font-mono">
-      {focusAreas.map((area, idx) => (
-        <motion.li
-          key={area}
-          variants={itemVariants}
-          custom={idx}
-          initial="hidden"
-          whileInView="visible"
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
+      {orderedCategories.filter(cat => groupedSkills[cat]).map((category, idx) => (
+        <motion.div
+          key={category}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-20px' }}
-          className="flex items-center gap-3"
+          transition={{ type: "spring", stiffness: 80, damping: 20, delay: idx * 0.1 }}
+          className="flex flex-col gap-4"
         >
-          <motion.span
-            className="text-solder-copper font-bold"
-            whileHover={{ scale: 1.3 }}
-            animate={{ opacity: [0.6, 1, 0.6] }}
-            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            {'>'}
-          </motion.span>
-          <motion.span
-            className="bg-slate-node text-white px-2 py-1 flex-1 max-w-sm rounded-sm"
-            whileHover={{ scale: 1.02, backgroundColor: 'var(--color-solder-copper)' }}
-          >
-            {area}
-          </motion.span>
-        </motion.li>
+          <h4 className="font-mono text-xs font-bold text-ink-primary uppercase tracking-[0.1em] border-b border-border-subtle pb-2">
+            {category}
+          </h4>
+          <ul className="flex flex-col gap-2">
+            {groupedSkills[category].map((skill) => (
+              <li key={skill} className="font-body text-sm text-ink-secondary">
+                {skill}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       ))}
-    </ul>
+    </div>
   );
 }
