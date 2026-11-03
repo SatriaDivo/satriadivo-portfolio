@@ -5,7 +5,7 @@ Personal portfolio website showcasing engineering projects, academic research pu
 ## Overview
 
 - **Minimalist Industrial Aesthetic**: Clean typography, sharp borders, high-contrast palette, and responsive design.
-- **Interactive Pixel Companion (Pia)**: Custom Canvas 2D animated pixel pet with speech bubble interactions, custom actions, and a collapsible widget state.
+- **Interactive Pixel Tour Guide (Pia)**: Custom Canvas 2D animated pixel companion acting as a virtual tour guide. Smoothly scrolls through portfolio sections with context-aware explanations, synchronized section highlighting, and intuitive navigation controls.
 - **Verified Credentials & Research**: Direct verification links for Credly badges and peer-reviewed conference publications.
 - **Single-Page Architecture**: Fast navigation with smooth scroll anchors and decoupled component state.
 
@@ -96,11 +96,13 @@ npm run preview
 
 ## Interactive Pixel Companion (Pia)
 
-The application includes an interactive pixel-art companion ("Pia") positioned in the bottom-left corner of the viewport:
-- **Canvas Rendering**: Uses `imageRendering: pixelated` for crisp pixel-art scaling.
-- **Animation States**: Handles idle looping, jumping, waving, and review animations driven by a JSON spritesheet.
-- **Dialogue System**: Displays responsive speech bubbles on interaction and click.
-- **Collapsible State**: Minimizes into a compact pill button so it does not obstruct reading on smaller screens.
+The application includes an interactive pixel-art companion ("Pia") positioned in the bottom-left corner of the viewport that acts as a guided tour host:
+- **Interactive Portfolio Tour**: Clicking Pia begins a sequential tour. Each step smoothly scrolls to the target section (`#projects`, `#focus`, `#experience`, `#achievements`, `#certifications`, `#contact`) while delivering context-aware explanations and expressive sprite animations.
+- **Synchronized Section Highlighting**: During the tour, target sections dynamically receive an animated `Fokus Panduan Pia 🐾` badge and an accent ring focus effect to guide the visitor's eye.
+- **Glassmorphism Tour Card & Progress Track**: Features a responsive dialogue card (`w-[min(360px,calc(100vw-32px))]`) with a live progress bar, step counter (`1/6`), and tailored action hints.
+- **Complete Navigation Controls**: Visitors can navigate using on-screen buttons (`Kembali`, `Lanjut`, `Ulang Tour`, `Tutup`), clicking the pet avatar directly, or using keyboard shortcuts (`ArrowRight` / `Space` for next, `ArrowLeft` for previous, `Escape` to close).
+- **Canvas 2D Spritesheet Engine**: Custom HTML5 Canvas renderer with `imageRendering: pixelated` for sharp pixel art. Drives multiple animation states (idle, waving, jumping, running, review, and waiting) from `/public/pia/spritesheet.webp`.
+- **Collapsible Floating Widget**: Minimizes into an unobtrusive pill button with an animated pulse beacon and active step indicator, expanding back to the exact step on demand.
 
 ## Design Tokens
 
