@@ -59,7 +59,7 @@ export function Experience() {
     })),
     ...organization.map((o) => ({
       role: o.role,
-      company: `${o.org}, ${o.department}`,
+      company: `${o.org} ${o.department}, ${o.institution}`,
       period: o.period,
       highlights: o.highlights,
     })),

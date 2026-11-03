@@ -154,7 +154,7 @@ export const organization = [
     role: "Wakil Gubernur",
     org: "Lembaga Eksekutif Mahasiswa",
     department: "Jurusan Teknologi Informasi",
-    institution: "Lampung State Polytechnic",
+    institution: "Politeknik Negeri Lampung (Polinela)",
     period: "Maret 2025 - Maret 2026",
     highlights: [
       "Merumuskan keputusan strategis bersama Gubernur untuk arah kebijakan dan pengelolaan lembaga",
@@ -176,7 +176,7 @@ export const projects = [
     description:
       "Kontribusi analisis data sintetis untuk mendukung pembuatan model AI pada proyek HERA (Heavy Element Risk Analyzer).",
     url: "https://103.217.145.187/",
-    image: "/hera.png",
+    image: "/hera.webp",
   },
   {
     id: "agrisense",
@@ -185,7 +185,7 @@ export const projects = [
     description:
       "Kontribusi menganalisis data pada proyek AgriSense untuk kebutuhan pengembangan model AI.",
     url: "https://agrisense.web.id/",
-    image: "/agrisense.png",
+    image: "/agrisense.webp",
   },
   {
     id: "elogbook",
@@ -194,7 +194,7 @@ export const projects = [
     description:
       "Pembuat model Computer Vision berbasis klasifikasi famili ikan untuk E-Logbook. Sistem ini dipadukan dengan IoT monitoring perikanan berarsitektur LoRa (TTGO ESP32), menggunakan komunikasi Transceiver di kapal dan Receiver di pelabuhan (Edge device) yang dilengkapi non-blocking state machine, ring buffer TX queue, serta ACK/retry logic.",
     url: "https://elogbookipb.web.id/",
-    image: "/elogbook.png",
+    image: "/elogbook.webp",
   },
   {
     id: "cocoasense",
@@ -203,7 +203,7 @@ export const projects = [
     description:
       "Person in Charge (PIC) proyek identifikasi kematangan & kondisi biji kakao. Mengembangkan role management tiga tingkat (Petani, Koperasi, Admin) beserta alur pengajuan akses.",
     url: "http://cocoasense.web.id/",
-    image: "/cocoasense.png",
+    image: "/cocoasense.webp",
   },
   {
     id: "iotkit-studio",
@@ -212,7 +212,7 @@ export const projects = [
     description:
       "Platform simulasi IoT no-code untuk merakit payload JSON secara visual, injeksi anomali (Chaos Engineering), dan testing protokol real-time. Dibangun dengan arsitektur dual-backend (Go & Node.js).",
     url: "https://github.com/SatriaDivo/IoTKit-Studio",
-    image: "/iotkit.png",
+    image: "/iotkit.webp",
   },
 ];
 
