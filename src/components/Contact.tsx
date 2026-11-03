@@ -1,10 +1,31 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
+import { Mail, Copy, Check } from 'lucide-react';
 import { personalInfo, uiTranslations } from '../data/portfolio';
 import { useLanguage } from '../context/LanguageContext';
 
 export function Contact() {
   const { lang } = useLanguage();
   const t = uiTranslations[lang].contact;
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(personalInfo.email);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      // Fallback for environments where clipboard API is restricted
+      const textArea = document.createElement('textarea');
+      textArea.value = personalInfo.email;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
 
   const links = [
     { label: 'GITHUB', href: personalInfo.github },
@@ -31,16 +52,43 @@ export function Contact() {
           {t.lead}
         </motion.p>
 
-        <motion.a
-          href={`mailto:${personalInfo.email}`}
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.1 }}
-          className="inline-flex items-center justify-center bg-ink-primary text-white px-8 py-4 text-sm font-medium hover:bg-ink-secondary transition-colors rounded-md shadow-xs"
+          className="flex flex-wrap items-center gap-3"
         >
-          {t.sendEmail}
-        </motion.a>
+          <a
+            href={`mailto:${personalInfo.email}`}
+            className="inline-flex items-center justify-center gap-2 bg-ink-primary text-white px-7 py-3.5 text-sm font-medium hover:bg-ink-secondary transition-colors rounded-md shadow-xs"
+          >
+            <Mail size={16} />
+            <span>{t.sendEmail}</span>
+          </a>
+
+          <button
+            onClick={handleCopyEmail}
+            className="inline-flex items-center justify-center gap-2 bg-surface border border-border-subtle text-ink-primary px-5 py-3.5 text-sm font-mono font-medium hover:border-ink-primary hover:bg-black/[0.02] transition-all rounded-md shadow-xs cursor-pointer"
+            title={lang === 'id' ? 'Salin alamat email ke clipboard' : 'Copy email address to clipboard'}
+          >
+            {copied ? (
+              <>
+                <Check size={16} className="text-emerald-600" />
+                <span className="text-emerald-700 font-semibold">{t.copied}</span>
+              </>
+            ) : (
+              <>
+                <Copy size={16} className="text-ink-secondary" />
+                <span>{t.copyEmail}</span>
+              </>
+            )}
+          </button>
+        </motion.div>
+
+        <p className="font-mono text-xs text-ink-muted mt-5">
+          Email: <span className="text-ink-secondary selection:bg-accent font-medium">{personalInfo.email}</span>
+        </p>
       </div>
 
       <div className="md:w-1/2 flex flex-col gap-4">

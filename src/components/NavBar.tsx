@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { uiTranslations } from '../data/portfolio';
+import { personalInfo, uiTranslations } from '../data/portfolio';
 
 function LanguageToggle({ className = '' }: { className?: string }) {
   const { lang, setLang } = useLanguage();
@@ -71,8 +71,8 @@ export function NavBar() {
           <span className="hidden md:inline text-ink-muted font-normal"> / {t.portfolio}</span>
         </a>
 
-        <div className="hidden sm:flex items-center gap-8">
-          <nav className="flex items-center gap-7">
+        <div className="hidden sm:flex items-center gap-6">
+          <nav className="flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
@@ -82,6 +82,16 @@ export function NavBar() {
                 {link.label}
               </a>
             ))}
+            <a
+              href={personalInfo.cvUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download="CV_Satria_Divo_Praditya.pdf"
+              className="font-mono text-xs text-ink-secondary hover:text-accent font-semibold px-2 py-1 rounded border border-border-subtle hover:border-accent transition-all"
+              title={lang === 'id' ? 'Unduh CV Satria' : "Download Satria's CV"}
+            >
+              CV 📄
+            </a>
           </nav>
           <LanguageToggle />
         </div>
@@ -130,6 +140,16 @@ export function NavBar() {
                   {link.label}
                 </a>
               ))}
+              <a
+                href={personalInfo.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download="CV_Satria_Divo_Praditya.pdf"
+                onClick={() => setOpen(false)}
+                className="text-sm font-mono font-medium text-accent hover:underline flex items-center gap-1.5 pt-3 border-t border-border-subtle"
+              >
+                <span>{lang === 'id' ? 'Unduh CV / Resume 📄' : 'Download Resume / CV 📄'}</span>
+              </a>
             </div>
           </motion.nav>
         )}

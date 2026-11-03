@@ -129,6 +129,29 @@ const TOUR_STEPS: TourStepContent[] = [
   },
 ];
 
+const FUN_FACTS: { id: string; en: string }[] = [
+  {
+    id: "💡 Fun Fact: Proyek E-Logbook maritim Satria menggunakan transmisi LoRa non-blocking state machine yang diuji langsung untuk komunikasi kapal nelayan ke pelabuhan!",
+    en: "💡 Fun Fact: Satria's maritime E-Logbook uses non-blocking LoRa state machines tested for real-time ship-to-port telemetry!",
+  },
+  {
+    id: "💡 Tahukah kamu? Satria meneliti peramalan kontribusi energi terbarukan global dengan algoritma Random Forest dan berhasil dipublikasikan di prosiding internasional ISC-ASSH!",
+    en: "💡 Did you know? Satria's research forecasting renewable energy using Random Forest was published in ISC-ASSH International Proceedings!",
+  },
+  {
+    id: "💡 Satria memegang 14 kredensial resmi Credly, mulai dari AWS Cloud Architecting, Cisco CCNA & CCNP, MikroTik, hingga IBM Granite!",
+    en: "💡 Satria holds 14 official Credly badges spanning AWS Cloud Architecting, Cisco CCNA/CCNP, MikroTik, and IBM Granite!",
+  },
+  {
+    id: "💡 Selain ngoding, Satria pernah menjabat sebagai Wakil Gubernur Mahasiswa TI di Polinela dan memimpin berbagai inisiatif teknologi kampus!",
+    en: "💡 Beyond engineering, Satria served as Vice Governor of Polinela's IT Student Executive Board, spearheading campus tech initiatives!",
+  },
+  {
+    id: "💡 Satria meraih Juara 2 Cyber Security di ajang nasional KMIPN 2026 mewakili Politeknik Negeri Lampung!",
+    en: "💡 Satria won 2nd Place in Cyber Security at the KMIPN 2026 national polytechnic competition!",
+  },
+];
+
 export function PiaPet() {
   const { lang, setLang } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
@@ -139,6 +162,7 @@ export function PiaPet() {
   const [currentAnim, setCurrentAnim] = useState<AnimationName>('idle');
   const [showBubble, setShowBubble] = useState(false);
   const [tourIndex, setTourIndex] = useState<number>(-1);
+  const [factIndex, setFactIndex] = useState<number | null>(null);
   const [hasPickedLanguage, setHasPickedLanguage] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
@@ -230,6 +254,7 @@ export function PiaPet() {
   const goToStep = useCallback((stepIdx: number) => {
     const boundedIdx = Math.max(0, Math.min(stepIdx, TOUR_STEPS.length - 1));
     setTourIndex(boundedIdx);
+    setFactIndex(null);
     setHasPickedLanguage(true);
 
     const step = TOUR_STEPS[boundedIdx];
@@ -284,6 +309,14 @@ export function PiaPet() {
       return;
     }
 
+    // If dialog is already open and tour is completed, cycle fun facts on pet click!
+    if (tourIndex === 7) {
+      setFactIndex((prev) => (prev === null ? 0 : (prev + 1) % FUN_FACTS.length));
+      setCurrentAnim('jumping');
+      startAutoCloseTimer(14000);
+      return;
+    }
+
     // If dialog is already open, do NOT advance tour; trigger a cheerful reaction & refresh timer
     setCurrentAnim((prev) => (prev === 'jumping' ? 'waving' : 'jumping'));
     startAutoCloseTimer(13000);
@@ -319,6 +352,10 @@ export function PiaPet() {
   }, [showBubble, advanceTour, prevTour]);
 
   const currentStep = tourIndex >= 0 ? TOUR_STEPS[tourIndex] : TOUR_STEPS[0];
+  const displayedMessage =
+    tourIndex === 7 && factIndex !== null
+      ? FUN_FACTS[factIndex][lang]
+      : currentStep.message[lang];
   const progressPercent =
     tourIndex <= 0
       ? 14
@@ -516,12 +553,25 @@ export function PiaPet() {
                   /* TOUR IN PROGRESS STATE */
                   <div className="flex flex-col">
                     <p className="text-ink-secondary text-xs sm:text-sm font-body leading-relaxed mb-4">
-                      {currentStep.message[lang]}
+                      {displayedMessage}
                     </p>
 
                     <div className="flex items-center justify-between pt-2 border-t border-border-subtle/80 gap-2">
-                      {/* Prev Button */}
-                      {tourIndex > 0 ? (
+                      {/* Prev Button or Fun Fact Toggle */}
+                      {tourIndex === 7 ? (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setFactIndex((prev) => (prev === null ? 0 : (prev + 1) % FUN_FACTS.length));
+                            setCurrentAnim('jumping');
+                            startAutoCloseTimer(14000);
+                          }}
+                          className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-accent hover:underline py-1 px-1.5 rounded transition-colors cursor-pointer"
+                          title={lang === 'id' ? 'Lihat fakta unik Satria' : "View Satria's fun facts"}
+                        >
+                          <span>💡 {lang === 'id' ? 'Fakta Unik' : 'Fun Facts'}</span>
+                        </button>
+                      ) : tourIndex > 0 ? (
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
@@ -548,7 +598,7 @@ export function PiaPet() {
                           e.stopPropagation();
                           advanceTour();
                         }}
-                        className="inline-flex items-center gap-1.5 text-xs font-mono font-medium bg-ink-primary text-white hover:bg-accent px-3 py-1.5 rounded-md shadow-sm transition-all hover:gap-2 active:scale-95"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono font-medium bg-ink-primary text-white hover:bg-accent px-3 py-1.5 rounded-md shadow-sm transition-all hover:gap-2 active:scale-95 cursor-pointer"
                       >
                         {tourIndex === 7 ? (
                           <>

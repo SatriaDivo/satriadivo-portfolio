@@ -5,8 +5,10 @@ Personal portfolio website showcasing engineering projects, academic research pu
 ## Overview
 
 - **Minimalist Industrial Aesthetic**: Clean typography, sharp borders, high-contrast palette, and responsive design.
-- **Bilingual Internationalization (ID & EN)**: Full bilingual support across the entire portfolio (Bahasa Indonesia & English) managed via React Context (`LanguageContext`) with browser `localStorage` persistence.
-- **Interactive Pixel Tour Guide (Pia)**: Custom Canvas 2D animated pixel companion acting as a virtual tour guide. Upon entering the portfolio, Pia greets visitors immediately and asks them to select their preferred language (`Bahasa Indonesia` or `English`) before guiding them through projects and credentials.
+- **Bilingual Internationalization (ID & EN)**: Full bilingual support across the entire portfolio (Bahasa Indonesia & English) managed via React Context (`LanguageContext`) with browser `localStorage` persistence and dynamic tab `<title>`/`<html lang>` synchronization.
+- **Integrated CV / Resume Download**: One-click download access for official curriculum vitae in Hero and sticky Navbar.
+- **Interactive Filtering**: Filterable engineering projects by technical domain (`IoT`, `AI/ML`, `Cloud`) and filterable Credly credentials (`Cloud/AWS`, `Networking`, `AI/Data`).
+- **Interactive Pixel Tour Guide (Pia)**: Custom Canvas 2D animated pixel companion acting as a virtual tour guide. Upon entering the portfolio, Pia greets visitors immediately, asks them to select their preferred language, and guides them step-by-step with easter egg fun facts.
 - **Verified Credentials & Research**: Direct verification links for Credly badges and peer-reviewed conference publications.
 - **Single-Page Architecture**: Fast navigation with smooth scroll anchors and decoupled component state.
 

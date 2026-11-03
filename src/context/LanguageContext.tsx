@@ -30,6 +30,16 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     }
   }, []);
 
+  // Synchronize document HTML lang attribute and browser tab title dynamically
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    if (lang === 'id') {
+      document.title = 'Satria Divo Praditya: Data Scientist & Rekayasa IoT';
+    } else {
+      document.title = 'Satria Divo Praditya: Data Scientist & IoT Engineer';
+    }
+  }, [lang]);
+
   const setLang = (newLang: Language) => {
     setLangState(newLang);
     setHasChosenLang(true);

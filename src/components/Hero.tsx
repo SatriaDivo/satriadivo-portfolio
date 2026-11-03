@@ -1,7 +1,7 @@
 import { motion, Variants } from 'motion/react';
 import { personalInfo, uiTranslations } from '../data/portfolio';
 import { useLanguage } from '../context/LanguageContext';
-import { MapPin, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowRight, FileDown } from 'lucide-react';
 
 const stagger: Variants = {
   hidden: { opacity: 0, y: 16 },
@@ -56,21 +56,32 @@ export function Hero() {
           <span>{personalInfo.company}</span>
         </motion.div>
 
-        <motion.div variants={stagger} custom={4} className="flex flex-wrap gap-4 items-center">
+        <motion.div variants={stagger} custom={4} className="flex flex-wrap gap-3 sm:gap-4 items-center">
           <a
             href="#projects"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-ink-primary text-white px-6 py-3 text-sm font-medium hover:bg-ink-secondary transition-colors rounded-md shadow-xs"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-ink-primary text-white px-6 py-3.5 text-sm font-medium hover:bg-ink-secondary transition-colors rounded-md shadow-xs"
           >
             {t.viewWorks}
             <ArrowRight size={16} />
           </a>
           <a
+            href={personalInfo.cvUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            download="CV_Satria_Divo_Praditya.pdf"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-surface border border-border-subtle text-ink-primary px-6 py-3.5 text-sm font-medium hover:border-ink-primary hover:bg-black/[0.02] transition-all rounded-md shadow-xs group"
+          >
+            <FileDown size={16} className="text-ink-secondary group-hover:text-accent transition-colors" />
+            <span>{t.downloadCv}</span>
+          </a>
+          <a
             href={personalInfo.github}
             target="_blank"
             rel="noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-surface border border-border-subtle text-ink-primary px-6 py-3 text-sm font-medium hover:border-ink-muted transition-colors rounded-md"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 text-ink-secondary hover:text-ink-primary px-3 py-3 text-sm font-mono transition-colors"
           >
-            {t.githubProfile}
+            <span>{t.githubProfile}</span>
+            <span className="text-xs">↗</span>
           </a>
         </motion.div>
       </div>

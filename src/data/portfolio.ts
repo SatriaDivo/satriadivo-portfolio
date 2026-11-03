@@ -25,6 +25,7 @@ export const personalInfo = {
   instagram: "https://www.instagram.com/satriadivoo",
   youtube: "https://www.youtube.com/@SatriaDivo1",
   email: "satriadivop354@gmail.com",
+  cvUrl: "/CV_Satria_Divo_Praditya.pdf",
   stats: {
     projects: 5,
     certifications: 14,
@@ -80,71 +81,85 @@ export const personalInfo = {
       name: "AWS Academy Graduate - Cloud Architecting",
       issuer: "Amazon Web Services Training and Certification",
       url: "https://www.credly.com/badges/a3b58719-040c-4d15-88de-7285c9e28b9d/public_url",
+      category: "cloud",
     },
     {
       name: "AWS Academy Graduate - Cloud Foundations",
       issuer: "Amazon Web Services Training and Certification",
       url: "https://www.credly.com/badges/213c5ba2-9772-4f38-9368-9b579d014dd1/public_url",
+      category: "cloud",
     },
     {
       name: "CCNA: Enterprise Networking, Security, and Automation",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/937b5ab5-3902-42ec-8fc9-66bb04252535/public_url",
+      category: "networking",
     },
     {
       name: "CCNA: Introduction to Networks",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/3949e001-feb8-4d65-9ae4-59e4752f144b/public_url",
+      category: "networking",
     },
     {
       name: "CCNA: Switching, Routing, and Wireless Essentials",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/a8e13e9c-8aac-4b85-9631-fc13b719b750/public_url",
+      category: "networking",
     },
     {
       name: "CCNP: Advanced Routing",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/314f055c-c57d-4337-b3c1-680af67d15e4/public_url",
+      category: "networking",
     },
     {
       name: "Computer Hardware Basics",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/590035e4-2290-4bac-90e1-a3731c883718/public_url",
+      category: "networking",
     },
     {
       name: "Data Classification and Summarization Using IBM Granite",
       issuer: "IBM SkillsBuild",
       url: "https://www.credly.com/badges/432de0b3-4200-48ed-8aeb-677c141943b2/public_url",
+      category: "ai-data",
     },
     {
       name: "DevNet Associate",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/184c9508-f76a-41e5-a088-798e107000ce/public_url",
+      category: "networking",
     },
     {
       name: "Ethical Hacker",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/4dc4fa72-403d-42cf-a09d-d72be38c8461/public_url",
+      category: "networking",
     },
     {
       name: "Introduction to IoT",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/87303a86-dd8d-4354-9b22-34b00fab4694/public_url",
+      category: "ai-data",
     },
     {
       name: "IT Essentials",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/cc1fc634-5a85-4996-b931-03b98237500f/public_url",
+      category: "networking",
     },
     {
       name: "MTCNA (MikroTik Certified Network Associate)",
       issuer: "MikroTik",
       url: "https://mikrotik.com/certificates",
+      category: "networking",
     },
     {
       name: "Python Essentials 1",
       issuer: "Cisco",
       url: "https://www.credly.com/badges/69efefcd-9f28-4d79-a1aa-e9b29ab9bd96/public_url",
+      category: "ai-data",
     },
   ],
 };
@@ -226,6 +241,8 @@ export const projects = [
   {
     id: "hera",
     title: "HERA (Heavy Element Risk Analyzer)",
+    category: "iot",
+    badge: "Sensor & AI Model",
     tech: ["AI/ML", "Data Synthesis", "Python"],
     description: {
       id: "Kontribusi analisis data sintetis untuk mendukung pembuatan model AI pada proyek HERA (Heavy Element Risk Analyzer).",
@@ -237,6 +254,8 @@ export const projects = [
   {
     id: "agrisense",
     title: "AgriSense",
+    category: "iot",
+    badge: "Smart Agriculture",
     tech: ["AI/ML", "Data Analysis", "Python"],
     description: {
       id: "Kontribusi menganalisis data pada proyek AgriSense untuk kebutuhan pengembangan model AI.",
@@ -248,6 +267,8 @@ export const projects = [
   {
     id: "elogbook",
     title: "E-Logbook",
+    category: "iot",
+    badge: "LoRa & Edge AI",
     tech: ["AI/ML", "Computer Vision", "C/C++", "ESP32", "LoRa"],
     description: {
       id: "Pembuat model Computer Vision berbasis klasifikasi famili ikan untuk E-Logbook. Sistem ini dipadukan dengan IoT monitoring perikanan berarsitektur LoRa (TTGO ESP32), menggunakan komunikasi Transceiver di kapal dan Receiver di pelabuhan (Edge device) yang dilengkapi non-blocking state machine, ring buffer TX queue, serta ACK/retry logic.",
@@ -259,6 +280,8 @@ export const projects = [
   {
     id: "cocoasense",
     title: "CocoaSense",
+    category: "ai",
+    badge: "Computer Vision",
     tech: ["Computer Vision", "AI/ML", "Python"],
     description: {
       id: "Person in Charge (PIC) proyek identifikasi kematangan & kondisi biji kakao. Mengembangkan role management tiga tingkat (Petani, Koperasi, Admin) beserta alur pengajuan akses.",
@@ -270,6 +293,8 @@ export const projects = [
   {
     id: "iotkit-studio",
     title: "IoTKit-Studio",
+    category: "cloud",
+    badge: "Distributed System",
     tech: ["Go", "Next.js", "MQTT", "WebSocket"],
     description: {
       id: "Platform simulasi IoT no-code untuk merakit payload JSON secara visual, injeksi anomali (Chaos Engineering), dan testing protokol real-time. Dibangun dengan arsitektur dual-backend (Go & Node.js).",
@@ -384,6 +409,7 @@ export const uiTranslations = {
       introBody: "Saya merancang sistem berlapis dari firmware perangkat keras (embedded) hemat daya hingga pipeline AI skalabel di cloud.",
       viewWorks: "Lihat Karya Unggulan",
       githubProfile: "Profil GitHub",
+      downloadCv: "Unduh CV / Resume",
       certTag: "Tersertifikasi AWS & CCNA",
       stats: {
         projects: "Proyek Rekayasa",
@@ -408,16 +434,30 @@ export const uiTranslations = {
     },
     projects: {
       viewDetail: "Buka Proyek",
+      filters: {
+        all: "Semua (5)",
+        iot: "IoT & Hardware",
+        ai: "AI & Computer Vision",
+        cloud: "Cloud & Simulator",
+      },
     },
     achievements: {
       viewDetail: "LIHAT DETAIL ↗",
     },
     certifications: {
       verified: "LENCANA RESMI",
+      filters: {
+        all: "Semua (14)",
+        cloud: "Cloud & AWS",
+        networking: "Jaringan (Cisco & MikroTik)",
+        aiData: "AI, Data & IoT",
+      },
     },
     contact: {
       lead: "Tertarik mendiskusikan arsitektur sistem, kolaborasi proyek, atau peluang profesional bersama Satria Divo Praditya? Mari terhubung.",
       sendEmail: "Kirim Email",
+      copyEmail: "Salin Email",
+      copied: "Tersalin ke Clipboard! ✓",
       socialsTitle: "JARINGAN & TAUTAN SOSIAL",
     },
     footer: {
@@ -441,6 +481,7 @@ export const uiTranslations = {
       introBody: "I build layered systems from constrained embedded device firmware to scalable AI pipelines in the cloud.",
       viewWorks: "View Selected Works",
       githubProfile: "GitHub Profile",
+      downloadCv: "Download Resume / CV",
       certTag: "AWS & CCNA Certified",
       stats: {
         projects: "Engineering Projects",
@@ -465,16 +506,30 @@ export const uiTranslations = {
     },
     projects: {
       viewDetail: "Open Project",
+      filters: {
+        all: "All (5)",
+        iot: "IoT & Hardware",
+        ai: "AI & Computer Vision",
+        cloud: "Cloud & Simulator",
+      },
     },
     achievements: {
       viewDetail: "VIEW DETAIL ↗",
     },
     certifications: {
       verified: "VERIFIED BADGE",
+      filters: {
+        all: "All (14)",
+        cloud: "Cloud & AWS",
+        networking: "Networking (Cisco & MikroTik)",
+        aiData: "AI, Data & IoT",
+      },
     },
     contact: {
       lead: "Interested in discussing system architecture, project collaboration, or professional opportunities with Satria Divo Praditya? Let's connect.",
       sendEmail: "Send an Email",
+      copyEmail: "Copy Email",
+      copied: "Copied to Clipboard! ✓",
       socialsTitle: "SOCIALS & LINKS",
     },
     footer: {
