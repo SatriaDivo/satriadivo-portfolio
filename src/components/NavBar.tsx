@@ -3,14 +3,14 @@ import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { uiTranslations } from '../data/portfolio';
 
-function LanguageToggle() {
+function LanguageToggle({ className = '' }: { className?: string }) {
   const { lang, setLang } = useLanguage();
 
   return (
-    <div className="flex items-center bg-surface border border-border-subtle rounded-full p-0.5 text-[11px] font-mono tracking-wider">
+    <div className={`flex items-center bg-surface border border-border-subtle rounded-full p-0.5 text-[10px] sm:text-[11px] font-mono tracking-wider shrink-0 ${className}`}>
       <button
         onClick={() => setLang('id')}
-        className={`px-2.5 py-1 rounded-full transition-all ${
+        className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-all ${
           lang === 'id'
             ? 'bg-ink-primary text-white font-bold shadow-xs'
             : 'text-ink-secondary hover:text-ink-primary'
@@ -21,7 +21,7 @@ function LanguageToggle() {
       </button>
       <button
         onClick={() => setLang('en')}
-        className={`px-2.5 py-1 rounded-full transition-all ${
+        className={`px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full transition-all ${
           lang === 'en'
             ? 'bg-ink-primary text-white font-bold shadow-xs'
             : 'text-ink-secondary hover:text-ink-primary'
@@ -54,16 +54,21 @@ export function NavBar() {
       transition={{ type: "spring", stiffness: 120, damping: 18 }}
       className="sticky top-0 z-50 w-full bg-paper/90 backdrop-blur-md border-b border-border-subtle"
     >
-      <div className="max-w-5xl mx-auto px-6 sm:px-12 md:px-20 flex items-center justify-between h-16 sm:h-20">
+      <div className="max-w-5xl mx-auto px-5 sm:px-12 md:px-20 flex items-center justify-between h-16 sm:h-20">
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="font-mono font-bold text-xs sm:text-sm text-ink-primary hover:text-accent transition-colors shrink-0 tracking-tight"
+          className="font-mono font-bold text-xs sm:text-sm text-ink-primary hover:text-accent transition-colors tracking-tight truncate mr-2"
         >
-          SATRIA DIVO PRADITYA / <span className="text-ink-muted font-normal">{t.portfolio}</span>
+          {/* Mobile: SATRIA DIVO */}
+          <span className="sm:hidden">SATRIA DIVO</span>
+          {/* Tablet & Desktop: SATRIA DIVO PRADITYA */}
+          <span className="hidden sm:inline">SATRIA DIVO PRADITYA</span>
+          {/* Large screens: / PORTOFOLIO */}
+          <span className="hidden md:inline text-ink-muted font-normal"> / {t.portfolio}</span>
         </a>
 
         <div className="hidden sm:flex items-center gap-8">
@@ -82,7 +87,7 @@ export function NavBar() {
         </div>
 
         {/* Mobile controls: Language Toggle + Hamburger */}
-        <div className="flex sm:hidden items-center gap-3">
+        <div className="flex sm:hidden items-center gap-2.5 shrink-0">
           <LanguageToggle />
           <button
             onClick={() => setOpen(!open)}
