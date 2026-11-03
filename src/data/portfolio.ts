@@ -14,7 +14,7 @@ export const personalInfo = {
   stats: {
     projects: 5,
     certifications: 14,
-    publications: 2,
+    publications: 3,
     experience: 1,
   },
   skills: [

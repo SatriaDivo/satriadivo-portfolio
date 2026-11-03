@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const NAV_LINKS = [
   { label: 'Works', href: '/#projects' },
@@ -31,13 +30,16 @@ export function NavBar() {
       className="sticky top-0 z-50 w-full bg-paper/90 backdrop-blur-md border-b border-border-subtle"
     >
       <div className="max-w-5xl mx-auto px-6 sm:px-12 md:px-20 flex items-center justify-between h-16 sm:h-20">
-        <Link
-          to="/"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        <a
+          href="#"
+          onClick={(e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          }}
           className="font-mono font-bold text-xs sm:text-sm text-ink-primary hover:text-accent transition-colors shrink-0 tracking-tight"
         >
           SATRIA DIVO / <span className="text-ink-muted font-normal">PORTFOLIO</span>
-        </Link>
+        </a>
 
         <nav className="hidden sm:flex items-center gap-8">
           {NAV_LINKS.map((link) => (

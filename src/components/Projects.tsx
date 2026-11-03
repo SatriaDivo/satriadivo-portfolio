@@ -26,7 +26,13 @@ export function Projects() {
               {/* @ts-ignore */}
               {project.image ? (
                 /* @ts-ignore */
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
               ) : (
                 <span className="font-mono text-ink-muted text-xs uppercase tracking-widest">
                   [ {project.id.toUpperCase()}_VISUAL ]

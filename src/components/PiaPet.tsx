@@ -179,7 +179,7 @@ export function PiaPet() {
               e.stopPropagation();
               setIsMinimized(true);
             }}
-            className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity bg-surface border border-border-subtle rounded-full p-1 text-ink-muted hover:text-ink-primary shadow-sm z-10"
+            className="absolute -top-1 -right-1 opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity bg-surface border border-border-subtle rounded-full p-1 text-ink-muted hover:text-ink-primary shadow-sm z-10"
             title="Sembunyikan Pia"
             aria-label="Sembunyikan Pia"
           >

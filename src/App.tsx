@@ -1,4 +1,5 @@
-import { motion, useScroll, useSpring } from 'motion/react';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 import { personalInfo } from './data/portfolio';
 import { NavBar } from './components/NavBar';
 import { Section } from './components/Section';
@@ -12,28 +13,41 @@ import { Contact } from './components/Contact';
 import { PiaPet } from './components/PiaPet';
 
 function ScrollTop() {
-  const { scrollYProgress } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, { stiffness: 200, damping: 30 });
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    return scrollY.on('change', (latest) => {
+      setVisible(latest > 250);
+    });
+  }, [scrollY]);
 
   return (
-    <motion.button
-      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-ink-primary text-white flex items-center justify-center shadow-lg hover:bg-ink-secondary transition-colors"
-      initial={{ opacity: 0, scale: 0 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true }}
-    >
-      <svg className="absolute inset-0 -rotate-90" width="40" height="40" viewBox="0 0 40 40">
-        <motion.circle
-          cx="20" cy="20" r="18"
-          fill="none" stroke="var(--color-border-subtle)"
-          strokeWidth="2"
-          strokeLinecap="round"
-          style={{ pathLength: scaleY }}
-        />
-      </svg>
-      <span className="relative text-sm font-mono">↑</span>
-    </motion.button>
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 right-6 z-50 w-10 h-10 rounded-full bg-ink-primary text-white flex items-center justify-center shadow-lg hover:bg-ink-secondary transition-colors"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0 }}
+          aria-label="Scroll to top"
+          title="Scroll to top"
+        >
+          <svg className="absolute inset-0 -rotate-90" width="40" height="40" viewBox="0 0 40 40">
+            <motion.circle
+              cx="20" cy="20" r="18"
+              fill="none" stroke="var(--color-border-subtle)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              style={{ pathLength: scaleY }}
+            />
+          </svg>
+          <span className="relative text-sm font-mono">↑</span>
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 }
 
