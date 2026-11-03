@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ReactNode, useEffect, useState } from 'react';
 import { Sparkles } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface SectionProps {
   id: string;
@@ -12,6 +13,7 @@ interface SectionProps {
 
 export function Section({ id, eyebrow, title, children, className = '' }: SectionProps) {
   const [isHighlighted, setIsHighlighted] = useState(false);
+  const { lang } = useLanguage();
 
   useEffect(() => {
     const handleTourStep = (e: Event) => {
@@ -48,7 +50,7 @@ export function Section({ id, eyebrow, title, children, className = '' }: Sectio
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent text-white font-mono text-[10px] tracking-wider uppercase mb-3 shadow-md"
           >
             <Sparkles size={11} className="animate-spin" style={{ animationDuration: '4s' }} />
-            <span>Fokus Panduan Pia 🐾</span>
+            <span>{lang === 'id' ? 'Fokus Panduan Pia 🐾' : 'Pia Guide Focus 🐾'}</span>
           </motion.div>
         )}
       </AnimatePresence>
