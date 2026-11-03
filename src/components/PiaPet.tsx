@@ -44,10 +44,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: 'TOUR • SAMBUTAN', en: 'TOUR • WELCOME' },
     stepNumber: { id: 'Mulai', en: 'Start' },
     message: {
-      id: 'Halo! Aku Pia 🐾 Selamat datang di portofolio resmi Satria Divo Praditya! Yuk, klik "Mulai Tour" biar aku ajak keliling dan jelasin karya-karyanya ✨',
-      en: 'Hello! I am Pia 🐾 Welcome to Satria Divo Praditya\'s official engineering portfolio! Click "Start Tour" and I will guide you through his work ✨',
+      id: 'Hai! Aku Pia 🐾 Asisten pixel resmi Satria Divo Praditya. Yuk, klik tombol "Mulai Tour" biar aku ajak keliling melihat inovasi AI, sistem IoT, dan prestasinya! ✨',
+      en: "Hi! I'm Pia 🐾 Satria Divo Praditya's official pixel companion. Click 'Start Tour' and let me guide you through his AI innovations, IoT systems, and credentials! ✨",
     },
-    nextHint: { id: 'Mulai Tour', en: 'Start Tour' },
+    nextHint: { id: 'Mulai Tour 🚀', en: 'Start Tour 🚀' },
     anim: 'waving',
   },
   {
@@ -55,10 +55,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: '01 • KARYA UNGGULAN', en: '01 • SELECTED WORKS' },
     stepNumber: { id: '1/6', en: '1/6' },
     message: {
-      id: 'Ini 01: Selected Works! Satria mengembangkan sistem IoT & AI nyata: HERA (Heavy Element Risk Analyzer), AgriSense, E-Logbook perikanan (LoRa & Edge AI), hingga CocoaSense 🚀',
-      en: 'This is 01: Selected Works! Satria builds real-world IoT & AI systems: HERA (Risk Analyzer), AgriSense, maritime E-Logbook (LoRa & Edge AI), and CocoaSense 🚀',
+      id: 'Tadaa! Ini 5 karya rekayasa unggulan Satria 🛠️ Mulai dari HERA (deteksi risiko unsur berat), sensor presisi AgriSense, hingga E-Logbook maritim berbasis LoRa & Edge AI. Coba arahkan kursor ke kartu proyek untuk mengintip arsitekturnya!',
+      en: "Here they are! Satria's top engineering builds 🛠️ From HERA (heavy element risk analyzer) and AgriSense, to maritime E-Logbooks powered by LoRa & Edge AI. Hover over any project card to inspect its real-world system architecture!",
     },
-    nextHint: { id: 'Lanjut: Fokus Teknis', en: 'Next: Technical Focus' },
+    nextHint: { id: 'Intip Senjata Teknis ⚡', en: 'Check Tech Arsenal ⚡' },
     anim: 'review',
   },
   {
@@ -66,10 +66,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: '02 • FOKUS TEKNIS', en: '02 • TECHNICAL FOCUS' },
     stepNumber: { id: '2/6', en: '2/6' },
     message: {
-      id: 'Ini 02: Technical Focus! Keahlian Satria berakar di AI & Machine Learning, Embedded Systems (ESP32/LoRa), Cloud Computing (AWS), serta Jaringan Komputer (CCNA) ⚡',
-      en: 'This is 02: Technical Focus! Satria\'s expertise spans AI & Machine Learning, Embedded Systems (ESP32/LoRa), Cloud Computing (AWS), and Computer Networking (CCNA) ⚡',
+      id: 'Penasaran sama keahlian teknis Satria? ⚡ Satria memadukan Machine Learning terapan, mikrokontroler (ESP32/LoRa), arsitektur Cloud AWS, hingga jaringan komputer enterprise (CCNA/CCNP). Multi-disiplin banget, kan?',
+      en: "Curious about Satria's technical depth? ⚡ He bridges applied Machine Learning, embedded systems (ESP32 & LoRa), AWS cloud infrastructure, and enterprise networking (CCNA/CCNP). A true cross-stack engineer!",
     },
-    nextHint: { id: 'Lanjut: Pengalaman', en: 'Next: Experience' },
+    nextHint: { id: 'Lihat Jam Terbang 💼', en: 'Explore Experience 💼' },
     anim: 'running-right',
   },
   {
@@ -77,10 +77,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: '03 • PENGALAMAN', en: '03 • EXPERIENCE' },
     stepNumber: { id: '3/6', en: '3/6' },
     message: {
-      id: 'Ini 03: Experience! Satria adalah Data Scientist Intern di PT Makerindo Prima Solusi dan pernah memimpin sebagai Wakil Gubernur Mahasiswa TI Polinela 💼',
-      en: 'This is 03: Experience! Satria is a Data Scientist Intern at PT Makerindo Prima Solusi and served as Vice Governor of the IT Student Executive Board at Polinela 💼',
+      id: 'Yuk intip jam terbangnya! 💼 Satria aktif sebagai Data Scientist Intern di PT Makerindo Prima Solusi menangani pipeline ML industri. Nggak cuma teknis, dia juga pernah memimpin sebagai Wakil Gubernur Mahasiswa TI Polinela!',
+      en: "Take a look at his track record! 💼 Satria builds industry ML pipelines as a Data Scientist Intern at PT Makerindo Prima Solusi. Beyond code, he demonstrated leadership as Vice Governor of Polinela's IT Student Executive Board!",
     },
-    nextHint: { id: 'Lanjut: Prestasi', en: 'Next: Achievements' },
+    nextHint: { id: 'Cek Prestasi & Riset 🏆', en: 'View Achievements 🏆' },
     anim: 'review',
   },
   {
@@ -88,10 +88,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: '04 • PRESTASI & RISET', en: '04 • ACHIEVEMENTS' },
     stepNumber: { id: '4/6', en: '4/6' },
     message: {
-      id: 'Ini 04: Achievements! Meraih Juara 2 Cyber Security KMIPN 2026 tingkat nasional, juara inovasi AITeC VI, dan publikasi riset Random Forest di prosiding ISC-ASSH 🏆',
-      en: 'This is 04: Achievements! Won 2nd Place in Cyber Security at KMIPN 2026 national competition, AITeC VI champion, and author of Random Forest research at ISC-ASSH 🏆',
+      id: 'Keren kan? Tapi tunggu, prestasinya nggak kalah seru! 🏆 Meraih Juara 2 Cyber Security KMIPN 2026 tingkat nasional, juara inovasi AITeC VI, dan penulis artikel riset Random Forest di prosiding internasional ISC-ASSH. Klik kartunya untuk melihat bukti publikasi!',
+      en: "Proven competitive excellence! 🏆 Satria claimed 2nd Place in Cyber Security at KMIPN 2026 national competition, won the AITeC VI innovation championship, and authored peer-reviewed Random Forest research at ISC-ASSH. Click any card to check out the records!",
     },
-    nextHint: { id: 'Lanjut: Lencana', en: 'Next: Verified Badges' },
+    nextHint: { id: 'Lihat Lencana Resmi 📜', en: 'View Verified Badges 📜' },
     anim: 'jumping',
   },
   {
@@ -99,10 +99,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: '05 • LENCANA RESMI', en: '05 • VERIFIED BADGES' },
     stepNumber: { id: '5/6', en: '5/6' },
     message: {
-      id: 'Ini 05: Verified Badges! Memiliki 14 sertifikasi resmi terverifikasi Credly, termasuk AWS Cloud Architecting, Cisco CCNA & CCNP, IBM Granite, dan MikroTik MTCNA 📜',
-      en: 'This is 05: Verified Badges! Holds 14 verified Credly credentials, including AWS Cloud Architecting, Cisco CCNA & CCNP, IBM Granite, and MikroTik MTCNA 📜',
+      id: 'Bukan sekadar klaim, ini bukti kompetensi resmi! 📜 Ada 14 sertifikasi terverifikasi Credly: AWS Certified Cloud, Cisco CCNA & CCNP, IBM Granite, hingga MikroTik MTCNA. Semua bisa kamu klik dan verifikasi langsung secara publik!',
+      en: "Verified industry credentials! 📜 Here are 14 digital credentials backed by Credly: AWS Cloud Architecting, Cisco CCNA & CCNP, IBM Granite, and MikroTik MTCNA. Every single badge can be clicked for public verification!",
     },
-    nextHint: { id: 'Lanjut: Kontak', en: 'Next: Connect' },
+    nextHint: { id: 'Ayo Terhubung 📬', en: "Let's Connect 📬" },
     anim: 'review',
   },
   {
@@ -110,10 +110,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: '06 • HUBUNGI SATRIA', en: '06 • CONNECT' },
     stepNumber: { id: '6/6', en: '6/6' },
     message: {
-      id: 'Ini 06: Connect! Butuh konsultasi IoT/AI, kolaborasi proyek, atau peluang kerja? Satria sangat terbuka untuk berdiskusi lewat LinkedIn, GitHub, atau Email 📬',
-      en: 'This is 06: Connect! Seeking IoT/AI consulting, project collaboration, or engineering talent? Satria is open to opportunities via LinkedIn, GitHub, or Email 📬',
+      id: 'Kita sampai di stasiun terakhir nih! 📬 Tertarik diskusi arsitektur IoT/AI, peluang riset, atau proyek kolaborasi? Satria selalu terbuka untuk obrolan teknik yang seru. Langsung klik tombol email di atas atau sapa via LinkedIn ya!',
+      en: "We've reached our final stop! 📬 Interested in IoT/AI architectures, research collaborations, or engineering opportunities? Satria loves high-impact tech discussions. Click the email button above or say hello on LinkedIn!",
     },
-    nextHint: { id: 'Selesaikan Tour', en: 'Finish Tour' },
+    nextHint: { id: 'Selesaikan Tour 🎉', en: 'Finish Tour 🎉' },
     anim: 'waving',
   },
   {
@@ -121,10 +121,10 @@ const TOUR_STEPS: TourStepContent[] = [
     badge: { id: 'TOUR • SELESAI', en: 'TOUR • COMPLETE' },
     stepNumber: { id: 'Selesai', en: 'Complete' },
     message: {
-      id: 'Yeay, tour selesai! 🎉 Terima kasih banyak sudah mampir menjelajahi portofolio Satria. Klik "Ulang Tour" kapan pun kamu ingin panduan lagi ya ✨',
-      en: 'Hooray, tour completed! 🎉 Thank you for exploring Satria\'s portfolio. Click "Restart Tour" anytime you would like to tour again ✨',
+      id: 'Horeee, tour selesai! 🎉 Gimana, seru kan jalan-jalan bareng aku? Kalau mau mengulang panduan dari awal, klik tombol "Ulang Tour" ya. Selamat menjelajah portofolio Satria lebih lanjut! 🐾✨',
+      en: "Hooray, tour completed! 🎉 How did you like exploring with me? If you ever want another walkthrough, just hit 'Restart Tour'. Enjoy discovering more about Satria's work! 🐾✨",
     },
-    nextHint: { id: 'Ulang Tour', en: 'Restart Tour' },
+    nextHint: { id: 'Ulang Tour 🔄', en: 'Restart Tour 🔄' },
     anim: 'jumping',
   },
 ];
@@ -142,6 +142,21 @@ export function PiaPet() {
   const [hasPickedLanguage, setHasPickedLanguage] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
+  // Auto-close timer helpers
+  const clearAutoCloseTimer = useCallback(() => {
+    if (bubbleTimeoutRef.current) {
+      clearTimeout(bubbleTimeoutRef.current);
+      bubbleTimeoutRef.current = null;
+    }
+  }, []);
+
+  const startAutoCloseTimer = useCallback((durationMs = 13000) => {
+    clearAutoCloseTimer();
+    bubbleTimeoutRef.current = setTimeout(() => {
+      setShowBubble(false);
+    }, durationMs);
+  }, [clearAutoCloseTimer]);
+
   // Preload spritesheet and immediately greet upon landing
   useEffect(() => {
     const img = new Image();
@@ -154,13 +169,14 @@ export function PiaPet() {
       bubbleTimeoutRef.current = setTimeout(() => {
         setCurrentAnim('waving');
         setShowBubble(true);
+        startAutoCloseTimer(16000);
       }, 400);
     };
 
     return () => {
-      if (bubbleTimeoutRef.current) clearTimeout(bubbleTimeoutRef.current);
+      clearAutoCloseTimer();
     };
-  }, []);
+  }, [clearAutoCloseTimer, startAutoCloseTimer]);
 
   // Frame animation runner
   useEffect(() => {
@@ -219,6 +235,7 @@ export function PiaPet() {
     const step = TOUR_STEPS[boundedIdx];
     setCurrentAnim(step.anim);
     setShowBubble(true);
+    startAutoCloseTimer(13000);
 
     if (step.targetId) {
       const targetElement = document.getElementById(step.targetId);
@@ -229,7 +246,7 @@ export function PiaPet() {
         new CustomEvent('pia-tour-step', { detail: { targetId: step.targetId } })
       );
     }
-  }, []);
+  }, [startAutoCloseTimer]);
 
   // Advance tour (only triggered by explicit Next button or ArrowRight)
   const advanceTour = useCallback(() => {
@@ -263,18 +280,21 @@ export function PiaPet() {
         const step = TOUR_STEPS[tourIndex];
         setCurrentAnim(step.anim);
       }
+      startAutoCloseTimer(13000);
       return;
     }
 
-    // If dialog is already open, do NOT advance tour; trigger a cheerful reaction
+    // If dialog is already open, do NOT advance tour; trigger a cheerful reaction & refresh timer
     setCurrentAnim((prev) => (prev === 'jumping' ? 'waving' : 'jumping'));
-  }, [showBubble, tourIndex]);
+    startAutoCloseTimer(13000);
+  }, [showBubble, tourIndex, startAutoCloseTimer]);
 
   // Select language from Pia's greeting
   const handleSelectLanguage = (selectedLang: Language) => {
     setLang(selectedLang);
     setHasPickedLanguage(true);
     setCurrentAnim('jumping');
+    startAutoCloseTimer(14000);
   };
 
   // Keyboard navigation
@@ -352,6 +372,8 @@ export function PiaPet() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 8, scale: 0.94 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+                onMouseEnter={clearAutoCloseTimer}
+                onMouseLeave={() => startAutoCloseTimer(8000)}
                 className="absolute bottom-full left-0 mb-3 w-[min(360px,calc(100vw-32px))] bg-surface/95 backdrop-blur-md border border-border-subtle text-ink-primary p-4 rounded-xl shadow-2xl ring-1 ring-black/[0.03]"
               >
                 {/* Header row with step badge, quick language switch, and close button */}
@@ -403,6 +425,7 @@ export function PiaPet() {
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
+                        clearAutoCloseTimer();
                         setShowBubble(false);
                       }}
                       className="text-ink-muted hover:text-ink-primary p-0.5 rounded transition-colors"
@@ -427,15 +450,19 @@ export function PiaPet() {
                 {/* INITIAL GREETING & LANGUAGE SELECTION STATE */}
                 {tourIndex < 0 ? (
                   <div className="flex flex-col">
-                    <p className="text-ink-primary text-xs sm:text-sm font-body leading-relaxed mb-1 font-medium">
+                    <p className="text-ink-primary text-xs sm:text-sm font-body leading-relaxed mb-1 font-semibold">
                       {lang === 'id'
-                        ? 'Halo! Selamat datang di portofolio Satria Divo Praditya 🐾'
-                        : "Hello! Welcome to Satria Divo Praditya's portfolio 🐾"}
+                        ? 'Hai, senang bertemu denganmu! Aku Pia 🐾'
+                        : "Hi there, great to meet you! I'm Pia 🐾"}
                     </p>
                     <p className="text-ink-secondary text-xs font-body leading-relaxed mb-3">
-                      {lang === 'id'
-                        ? 'Pilih bahasa untuk menjelajahi portofolio bersama Pia:'
-                        : 'Please choose your preferred language to explore with Pia:'}
+                      {hasPickedLanguage
+                        ? lang === 'id'
+                          ? 'Bahasa Indonesia siap! Yuk klik "Mulai Tour", aku ajak keliling melihat inovasi AI, IoT, dan prestasi Satria ✨'
+                          : "English selected! Click 'Start Tour' and let's explore Satria's AI, IoT, and credentials together ✨"
+                        : lang === 'id'
+                        ? 'Aku asisten pixel Satria. Sebelum kita mulai tour keliling, kamu lebih nyaman pakai bahasa apa nih?'
+                        : "I'm Satria's pixel guide. Before we start our journey, which language do you prefer?"}
                     </p>
 
                     {/* Language choice buttons */}
@@ -467,7 +494,10 @@ export function PiaPet() {
                     {/* Start Tour CTA */}
                     <div className="flex items-center justify-between pt-2 border-t border-border-subtle/80">
                       <button
-                        onClick={() => setShowBubble(false)}
+                        onClick={() => {
+                          clearAutoCloseTimer();
+                          setShowBubble(false);
+                        }}
                         className="text-[11px] font-mono text-ink-muted hover:text-ink-secondary transition-colors"
                       >
                         {lang === 'id' ? 'Lewati' : 'Skip'}
@@ -477,7 +507,7 @@ export function PiaPet() {
                         onClick={advanceTour}
                         className="inline-flex items-center gap-1.5 text-xs font-mono font-medium bg-ink-primary text-white hover:bg-accent px-3 py-1.5 rounded-md shadow-sm transition-all hover:gap-2 active:scale-95"
                       >
-                        <span>{lang === 'id' ? 'Mulai Tour' : 'Start Tour'}</span>
+                        <span>{lang === 'id' ? 'Mulai Tour 🚀' : 'Start Tour 🚀'}</span>
                         <ChevronRight size={13} />
                       </button>
                     </div>
@@ -546,6 +576,7 @@ export function PiaPet() {
           <button
             onClick={(e) => {
               e.stopPropagation();
+              clearAutoCloseTimer();
               setIsMinimized(true);
             }}
             className="absolute -top-1 -right-1 opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity bg-surface border border-border-subtle rounded-full p-1 text-ink-muted hover:text-ink-primary shadow-sm z-10"
