@@ -6,10 +6,10 @@ import { Hero } from './components/Hero';
 import { Projects } from './components/Projects';
 import { Achievements } from './components/Achievements';
 import { Experience } from './components/Experience';
-import { BlogPreview } from './components/BlogPreview';
 import { FocusAreas } from './components/FocusAreas';
 import { Certifications } from './components/Certifications';
 import { Contact } from './components/Contact';
+import { PiaPet } from './components/PiaPet';
 
 function ScrollTop() {
   const { scrollYProgress } = useScroll();
@@ -68,11 +68,7 @@ export default function App() {
             <Certifications />
           </Section>
 
-          <Section id="blog" eyebrow="06" title="Technical Writings">
-            <BlogPreview />
-          </Section>
-
-          <Section id="contact" eyebrow="07" title="Connect">
+          <Section id="contact" eyebrow="06" title="Connect">
             <Contact />
           </Section>
         </div>
@@ -82,15 +78,16 @@ export default function App() {
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
           <p className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-ink-secondary">
-            {personalInfo.name} — {personalInfo.role}
+            {personalInfo.name} / {personalInfo.role}
           </p>
         </div>
         <p className="text-[10px] sm:text-xs font-mono text-ink-muted">
-          © {new Date().getFullYear()} — Engineering & Data Science
+          © {new Date().getFullYear()} • Engineering & Data Science
         </p>
       </footer>
 
       <ScrollTop />
+      <PiaPet />
     </div>
   );
 }

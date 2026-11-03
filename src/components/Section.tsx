@@ -11,7 +11,7 @@ interface SectionProps {
 
 export function Section({ id, eyebrow, title, children, className = '' }: SectionProps) {
   return (
-    <section id={id} className={`relative scroll-mt-24 group ${className}`}>
+    <section id={id} className={`relative scroll-mt-24 ${className}`}>
       {(eyebrow || title) && (
         <div className="mb-10 sm:mb-12 border-b border-border-subtle pb-4 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6">
           {eyebrow && (

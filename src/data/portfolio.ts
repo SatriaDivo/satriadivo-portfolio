@@ -2,19 +2,19 @@ export const personalInfo = {
   name: "Satria Divo Praditya",
   role: "Data Scientist Intern",
   company: "PT Makerindo Prima Solusi",
-  education: "B.App.Sc in Internet Engineering Technology — Lampung State Polytechnic (2023–Present)",
+  education: "B.App.Sc in Internet Engineering Technology, Lampung State Polytechnic (2023 - Sekarang)",
   location: "Lampung Selatan, Lampung, Indonesia",
   phone: "+62 895 3232 3162 4",
-  thesis: "Saya membangun sistem berlapis — dari firmware sampai AI pipeline.",
+  thesis: "Membangun sistem terintegrasi dari firmware perangkat hingga AI pipeline di cloud.",
   github: "https://github.com/satriaDivo",
   linkedin: "https://www.linkedin.com/in/satria-divo-praditya",
   instagram: "https://www.instagram.com/satriadivoo",
   youtube: "https://www.youtube.com/@SatriaDivo1",
   email: "satriadivop354@gmail.com",
   stats: {
-    projects: 7,
+    projects: 5,
     certifications: 14,
-    publications: 1,
+    publications: 2,
     experience: 1,
   },
   skills: [
@@ -53,7 +53,7 @@ export const personalInfo = {
     "CCNA Switching & Routing",
     "CCNP Advanced Routing",
     "Computer Hardware Basics",
-    "Data Classification — IBM Granite",
+    "Data Classification (IBM Granite)",
     "DevNet Associate",
     "Ethical Hacker",
     "Introduction to IoT",
@@ -139,9 +139,9 @@ export const experience = [
   {
     role: "Data Scientist Intern",
     company: "PT Makerindo Prima Solusi",
-    period: "April 2026 – Sekarang",
+    period: "April 2026 - Sekarang",
     highlights: [
-      "Berkontribusi dalam proyek HERA (Heavy Element Risk Analyzer) — analisis data sintetis untuk model AI",
+      "Berkontribusi dalam proyek HERA (Heavy Element Risk Analyzer) pada analisis data sintetis untuk model AI",
       "Menganalisis data proyek AgriSense untuk pengembangan model AI",
       "PIC proyek identifikasi kematangan & kondisi biji Kakao (CocoaSense)",
       "Membuat model klasifikasi AI pada proyek E-Logbook",
@@ -155,11 +155,11 @@ export const organization = [
     org: "Lembaga Eksekutif Mahasiswa",
     department: "Jurusan Teknologi Informasi",
     institution: "Lampung State Polytechnic",
-    period: "Maret 2025 – Maret 2026",
+    period: "Maret 2025 - Maret 2026",
     highlights: [
       "Merumuskan keputusan strategis bersama Gubernur untuk arah kebijakan dan pengelolaan lembaga",
       "Mengoordinasikan seluruh divisi internal guna memastikan setiap program kerja berjalan sesuai timeline",
-      "Bertindak sebagai penanggung jawab operasional saat Gubernur berhalangan — memimpin rapat dan memberikan arahan",
+      "Bertindak sebagai penanggung jawab operasional saat Gubernur berhalangan dengan memimpin rapat dan memberikan arahan",
       "Mengawasi pelaksanaan kegiatan kemahasiswaan dan memastikan kepatuhan terhadap SOP",
       "Membangun komunikasi aktif dengan organisasi internal kampus dan pihak jurusan",
       "Menyusun, mengevaluasi, dan mengoptimalkan program kerja tahunan",
@@ -201,7 +201,7 @@ export const projects = [
     title: "CocoaSense",
     tech: ["Computer Vision", "AI/ML", "Python"],
     description:
-      "Person in Charge (PIC) proyek identifikasi kematangan & kondisi biji kakao. Role management tiga tingkat: Petani, Koperasi, Admin — dengan flow pengajuan akses.",
+      "Person in Charge (PIC) proyek identifikasi kematangan & kondisi biji kakao. Mengembangkan role management tiga tingkat (Petani, Koperasi, Admin) beserta alur pengajuan akses.",
     url: "http://cocoasense.web.id/",
     image: "/cocoasense.png",
   },
@@ -214,54 +214,56 @@ export const projects = [
     url: "https://github.com/SatriaDivo/IoTKit-Studio",
     image: "/iotkit.png",
   },
-  {
-    id: "codevault",
-    title: "CodeVault",
-    tech: ["Tauri", "Rust", "React", "TypeScript"],
-    description:
-      "Aplikasi desktop workspace manager untuk menganalisis dan membersihkan direktori proyek developer. Dibangun menggunakan Tauri dan Rust untuk performa native, mendeteksi cache berat (Node, Python, Rust, Flutter) guna menghemat storage.",
-    url: "https://github.com/SatriaDivo/CodeVault",
-    image: "/codevault.png",
-  },
-  {
-    id: "ruangstok",
-    title: "RuangStok",
-    tech: ["Google Apps Script", "Google Sheets", "JavaScript"],
-    description:
-      "Sistem manajemen inventori ringan berbasis cloud. Dibangun secara serverless memanfaatkan Google Apps Script sebagai backend eksekusi logika dan Google Sheets sebagai database.",
-    url: "https://github.com/SatriaDivo/RuangStok",
-    image: "/ruangstok.png",
-  },
 ];
 
 export const focusAreas = [
-  "Internet of Things (IoT) — Arduino, ESP32, Raspberry Pi",
-  "AI & Machine Learning — Model development, TensorFlow Lite",
-  "Cloud Computing & DevOps — AWS, Docker, Kubernetes, CI/CD",
-  "Networking & Security — CCNA-level, Firewall, VPN",
-  "Web & Mobile Development — React, Next.js, Node.js, React Native, Flutter/Dart",
+  "Internet of Things (IoT): Arduino, ESP32, Raspberry Pi",
+  "AI & Machine Learning: Model development, TensorFlow Lite",
+  "Cloud Computing & DevOps: AWS, Docker, Kubernetes, CI/CD",
+  "Networking & Security: CCNA-level, Firewall, VPN",
+  "Web & Mobile Development: React, Next.js, Node.js, React Native, Flutter/Dart",
 ];
 
 export const achievements = [
+  {
+    id: "kmipn-cyber-security-2026",
+    title: "Juara 2 KMIPN: Cyber Security (Responsive Challenger)",
+    category: "Competition",
+    date: "2026",
+    description:
+      "Meraih Juara 2 pada Kompetisi Mahasiswa Bidang Informatika Politeknik Nasional (KMIPN) cabang Cyber Security kategori Responsive Challenger mewakili Politeknik Negeri Lampung di tingkat nasional.",
+    tags: ["Cyber Security", "KMIPN", "Competition", "National"],
+    url: "https://lnkd.in/p/ehykpqaU",
+  },
+  {
+    id: "isc-assh-2025",
+    title: "Publikasi Prosiding ISC-ASSH 2025",
+    category: "Publication",
+    date: "2025",
+    description:
+      "Co-author artikel ilmiah \"Prediction of Renewable Energy Contribution to Global Primary Energy Needs Using Random Forest Algorithm\", riset peramalan kontribusi energi terbarukan global menggunakan algoritma Random Forest yang dipublikasikan pada Proceedings in International Student Conference on Applied Sciences, Social Sciences, and Humanities (ISC-ASSH).",
+    tags: ["Machine Learning", "Random Forest", "Renewable Energy", "Research"],
+    url: "https://lnkd.in/p/ehTH-qag",
+  },
+  {
+    id: "trendx-journal",
+    title: "Publikasi Jurnal TrendX Journal of Community Service",
+    category: "Publication",
+    date: "2025",
+    description:
+      "Co-author jurnal ilmiah \"Peningkatan Kesadaran Siswa Tentang Etika dan Perilaku Media Sosial di SMA Tri Sukses\", dipublikasikan di TrendX (Journal of Community Service: Innovation and Technology Applications).",
+    tags: ["Research", "Digital Literacy", "Community Service"],
+    url: "https://ideanovation.org/journal/index.php/trendx/article/view/20",
+  },
   {
     id: "aitec-vi-2024",
     title: "Juara di AITeC VI 2024",
     category: "Competition",
     date: "2024",
     description:
-      "Meraih juara pada kompetisi AITeC VI 2024 dengan inovasi pertanian cerdas berbasis AI dan IoT — mewakili mahasiswa Jurusan Teknologi Informasi Lampung State Polytechnic.",
+      "Meraih juara pada kompetisi AITeC VI 2024 dengan inovasi pertanian cerdas berbasis AI dan IoT mewakili mahasiswa Jurusan Teknologi Informasi Lampung State Polytechnic.",
     tags: ["AI", "IoT", "Smart Agriculture"],
     url: "https://jti.polinela.ac.id/mahasiswa-jti-polinela-sabet-juara-di-aitec-vi-2024-dengan-inovasi-pertanian-cerdas-berbasis-ai-dan-iot/",
-  },
-  {
-    id: "trendx-journal",
-    title: "Publikasi Jurnal — TrendX Journal of Community Service",
-    category: "Publication",
-    date: "2025",
-    description:
-      "Co-author jurnal ilmiah \"Peningkatan Kesadaran Siswa Tentang Etika dan Perilaku Media Sosial di SMA Tri Sukses\" — dipublikasikan di TrendX (Journal of Community Service: Innovation and Technology Applications).",
-    tags: ["Research", "Digital Literacy", "Community Service"],
-    url: "https://ideanovation.org/journal/index.php/trendx/article/view/20",
   },
   {
     id: "isc-2024",
@@ -269,7 +271,7 @@ export const achievements = [
     category: "Conference",
     date: "2024",
     description:
-      "Mewakili Lampung State Polytechnic dalam Student International Conference (ISC) 2024 — membuktikan diri di panggung global bersama tim Internet Engineering Technology.",
+      "Mewakili Lampung State Polytechnic dalam Student International Conference (ISC) 2024 bersama tim Internet Engineering Technology di panggung global.",
     tags: ["International", "Conference", "Networking"],
     url: "https://iet.polinela.ac.id/2024/12/19/dua-tim-teknologi-rekayasa-internet-wakili-polinela-buktikan-diri-di-panggung-global-melalui-student-international-conference-isc-2024/",
   },

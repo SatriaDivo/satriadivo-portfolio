@@ -38,7 +38,7 @@ export function Hero() {
           className="text-lg sm:text-xl text-ink-secondary font-body leading-relaxed max-w-2xl mb-8"
         >
           I am a <strong className="text-ink-primary font-medium">Data Scientist & IoT Engineer</strong>. 
-          I build layered systems—from constrained firmware in embedded devices to scalable AI pipelines in the cloud.
+          I build layered systems from constrained firmware in embedded devices to scalable AI pipelines in the cloud.
         </motion.p>
 
         <motion.div variants={stagger} custom={3} className="flex flex-wrap items-center gap-4 sm:gap-6 text-sm font-mono text-ink-muted mb-10">
