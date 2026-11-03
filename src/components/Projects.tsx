@@ -1,8 +1,11 @@
 import { motion } from 'motion/react';
 import { projects } from '../data/portfolio';
+import { useLanguage } from '../context/LanguageContext';
 import { ArrowUpRight } from 'lucide-react';
 
 export function Projects() {
+  const { lang } = useLanguage();
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
       {projects.map((project, idx) => {
@@ -19,13 +22,15 @@ export function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-20px' }}
             transition={{ type: "spring", stiffness: 100, damping: 20, delay: idx * 0.1 }}
-            className={`group flex flex-col ${isFeatured ? 'md:col-span-2 md:flex-row gap-8 md:gap-12' : 'gap-6'}`}
+            className={`group flex flex-col p-4 sm:p-5 -m-4 sm:-m-5 rounded-xl border border-transparent hover:border-border-subtle hover:bg-surface/60 transition-all ${
+              isFeatured ? 'md:col-span-2 md:flex-row gap-8 md:gap-12' : 'gap-6'
+            }`}
           >
-            {/* Visual Placeholder for technical layout */}
-            <div className={`bg-tech-node border border-border-subtle aspect-video flex items-center justify-center overflow-hidden ${isFeatured ? 'md:w-1/2' : 'w-full'}`}>
-              {/* @ts-ignore */}
+            {/* Visual Media Container */}
+            <div className={`bg-tech-node border border-border-subtle rounded-lg aspect-video flex items-center justify-center overflow-hidden shrink-0 ${
+              isFeatured ? 'md:w-1/2' : 'w-full'
+            }`}>
               {project.image ? (
-                /* @ts-ignore */
                 <img
                   src={project.image}
                   alt={project.title}
@@ -47,16 +52,16 @@ export function Projects() {
                 </h3>
                 <ArrowUpRight size={20} className="text-ink-muted group-hover:text-accent transition-colors shrink-0" />
               </div>
-              
+
               <p className="text-sm sm:text-base text-ink-secondary leading-relaxed mb-6 font-body">
-                {project.description}
+                {project.description[lang]}
               </p>
 
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tech.map((t) => (
                   <span
                     key={t}
-                    className="text-[10px] sm:text-xs font-mono font-medium text-ink-primary bg-surface border border-border-subtle px-2 py-1"
+                    className="text-[10px] sm:text-xs font-mono font-medium text-ink-primary bg-surface border border-border-subtle px-2 py-1 rounded-sm"
                   >
                     {t}
                   </span>

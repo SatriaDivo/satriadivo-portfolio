@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
-import { personalInfo } from './data/portfolio';
+import { personalInfo, uiTranslations } from './data/portfolio';
+import { LanguageProvider, useLanguage } from './context/LanguageContext';
 import { NavBar } from './components/NavBar';
 import { Section } from './components/Section';
 import { Hero } from './components/Hero';
@@ -51,7 +52,10 @@ function ScrollTop() {
   );
 }
 
-export default function App() {
+function PortfolioContent() {
+  const { lang } = useLanguage();
+  const t = uiTranslations[lang];
+
   return (
     <div className="min-h-screen flex flex-col bg-paper selection:bg-ink-primary selection:text-white">
       <NavBar />
@@ -62,27 +66,27 @@ export default function App() {
             <Hero />
           </Section>
 
-          <Section id="projects" eyebrow="01" title="Selected Works">
+          <Section id="projects" eyebrow={t.sections.projectsEyebrow} title={t.sections.projectsTitle}>
             <Projects />
           </Section>
 
-          <Section id="focus" eyebrow="02" title="Technical Focus">
+          <Section id="focus" eyebrow={t.sections.focusEyebrow} title={t.sections.focusTitle}>
             <FocusAreas />
           </Section>
 
-          <Section id="experience" eyebrow="03" title="Experience">
+          <Section id="experience" eyebrow={t.sections.experienceEyebrow} title={t.sections.experienceTitle}>
             <Experience />
           </Section>
 
-          <Section id="achievements" eyebrow="04" title="Achievements">
+          <Section id="achievements" eyebrow={t.sections.achievementsEyebrow} title={t.sections.achievementsTitle}>
             <Achievements />
           </Section>
 
-          <Section id="certifications" eyebrow="05" title="Verified Badges">
+          <Section id="certifications" eyebrow={t.sections.certificationsEyebrow} title={t.sections.certificationsTitle}>
             <Certifications />
           </Section>
 
-          <Section id="contact" eyebrow="06" title="Connect">
+          <Section id="contact" eyebrow={t.sections.contactEyebrow} title={t.sections.contactTitle}>
             <Contact />
           </Section>
         </div>
@@ -92,16 +96,24 @@ export default function App() {
         <div className="flex items-center gap-3">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shrink-0" />
           <p className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-ink-secondary">
-            {personalInfo.name} / {personalInfo.role}
+            {personalInfo.name} / {personalInfo.role[lang]}
           </p>
         </div>
         <p className="text-[10px] sm:text-xs font-mono text-ink-muted">
-          © {new Date().getFullYear()} • Engineering & Data Science
+          © {new Date().getFullYear()} • {t.footer.tagline}
         </p>
       </footer>
 
       <ScrollTop />
       <PiaPet />
     </div>
+  );
+}
+
+export default function App() {
+  return (
+    <LanguageProvider>
+      <PortfolioContent />
+    </LanguageProvider>
   );
 }

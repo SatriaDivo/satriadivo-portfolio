@@ -1,7 +1,11 @@
 import { motion } from 'motion/react';
-import { personalInfo } from '../data/portfolio';
+import { personalInfo, uiTranslations } from '../data/portfolio';
+import { useLanguage } from '../context/LanguageContext';
 
 export function Contact() {
+  const { lang } = useLanguage();
+  const t = uiTranslations[lang].contact;
+
   const links = [
     { label: 'GITHUB', href: personalInfo.github },
     { label: 'LINKEDIN', href: personalInfo.linkedin },
@@ -24,7 +28,7 @@ export function Contact() {
           transition={{ type: "spring", stiffness: 80, damping: 18 }}
           className="text-ink-secondary leading-relaxed text-base sm:text-lg font-body mb-8"
         >
-          Interested in discussing system architecture, project collaboration, or professional opportunities with Satria Divo Praditya? Let's connect.
+          {t.lead}
         </motion.p>
 
         <motion.a
@@ -33,15 +37,15 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 80, damping: 18, delay: 0.1 }}
-          className="inline-flex items-center justify-center bg-ink-primary text-white px-8 py-4 text-sm font-medium hover:bg-ink-secondary transition-colors"
+          className="inline-flex items-center justify-center bg-ink-primary text-white px-8 py-4 text-sm font-medium hover:bg-ink-secondary transition-colors rounded-md shadow-xs"
         >
-          Send an Email
+          {t.sendEmail}
         </motion.a>
       </div>
 
       <div className="md:w-1/2 flex flex-col gap-4">
         <h4 className="font-mono text-xs font-bold text-ink-muted uppercase tracking-[0.2em] mb-2">
-          SOCIALS & LINKS
+          {t.socialsTitle}
         </h4>
         <div className="flex flex-col gap-0 border-y border-border-subtle">
           {links.map((link, i) => (

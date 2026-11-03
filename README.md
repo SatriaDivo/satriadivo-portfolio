@@ -5,7 +5,8 @@ Personal portfolio website showcasing engineering projects, academic research pu
 ## Overview
 
 - **Minimalist Industrial Aesthetic**: Clean typography, sharp borders, high-contrast palette, and responsive design.
-- **Interactive Pixel Tour Guide (Pia)**: Custom Canvas 2D animated pixel companion acting as a virtual tour guide. Smoothly scrolls through portfolio sections with context-aware explanations, synchronized section highlighting, and intuitive navigation controls.
+- **Bilingual Internationalization (ID & EN)**: Full bilingual support across the entire portfolio (Bahasa Indonesia & English) managed via React Context (`LanguageContext`) with browser `localStorage` persistence.
+- **Interactive Pixel Tour Guide (Pia)**: Custom Canvas 2D animated pixel companion acting as a virtual tour guide. Upon entering the portfolio, Pia greets visitors immediately and asks them to select their preferred language (`Bahasa Indonesia` or `English`) before guiding them through projects and credentials.
 - **Verified Credentials & Research**: Direct verification links for Credly badges and peer-reviewed conference publications.
 - **Single-Page Architecture**: Fast navigation with smooth scroll anchors and decoupled component state.
 
@@ -42,6 +43,8 @@ Personal portfolio website showcasing engineering projects, academic research pu
 │   │   ├── Projects.tsx         # Featured engineering case studies
 │   │   ├── ScrollTop.tsx        # Scroll-to-top floating button
 │   │   └── Section.tsx          # Reusable section layout wrapper
+│   ├── context/                 # Global state management
+│   │   └── LanguageContext.tsx  # React Context for bilingual switching (ID / EN)
 │   ├── data/
 │   │   └── portfolio.ts         # Portfolio data schema, credentials, and projects
 │   ├── App.tsx                  # Main portfolio container
@@ -97,10 +100,12 @@ npm run preview
 ## Interactive Pixel Companion (Pia)
 
 The application includes an interactive pixel-art companion ("Pia") positioned in the bottom-left corner of the viewport that acts as a guided tour host:
-- **Interactive Portfolio Tour**: Clicking Pia begins a sequential tour. Each step smoothly scrolls to the target section (`#projects`, `#focus`, `#experience`, `#achievements`, `#certifications`, `#contact`) while delivering context-aware explanations and expressive sprite animations.
+- **Instant Welcome & Language Selection**: Upon page landing, Pia automatically waves and opens an interactive greeting dialog asking visitors to choose between `🇮🇩 Bahasa Indonesia` and `🇬🇧 English`. Selecting a language instantly adapts all copy, Pia's tour explanations, and navbar indicators.
+- **Interactive Portfolio Tour**: Visitors can click "Mulai Tour" / "Start Tour" to begin a guided journey. Each step smoothly scrolls to the target section (`#projects`, `#focus`, `#experience`, `#achievements`, `#certifications`, `#contact`) with context-aware explanations and expressive animations.
 - **Synchronized Section Highlighting**: During the tour, target sections dynamically receive an animated `Fokus Panduan Pia 🐾` badge and an accent ring focus effect to guide the visitor's eye.
+- **Card-Level & Navbar Language Switching**: Visitors can toggle between Indonesian and English at any time during the tour—via the quick toggle on Pia's dialog card or the header navigation bar—updating the active step explanation immediately.
 - **Glassmorphism Tour Card & Progress Track**: Features a responsive dialogue card (`w-[min(360px,calc(100vw-32px))]`) with a live progress bar, step counter (`1/6`), and tailored action hints.
-- **Complete Navigation Controls**: Visitors can navigate using on-screen buttons (`Kembali`, `Lanjut`, `Ulang Tour`, `Tutup`), clicking the pet avatar directly, or using keyboard shortcuts (`ArrowRight` / `Space` for next, `ArrowLeft` for previous, `Escape` to close).
+- **Complete Navigation Controls**: Visitors can navigate using on-screen buttons (`Kembali` / `Back`, `Lanjut` / `Next`, `Ulang Tour` / `Restart`), clicking the pet avatar directly, or using keyboard shortcuts (`ArrowRight` for next, `ArrowLeft` for previous, `Escape` to close).
 - **Canvas 2D Spritesheet Engine**: Custom HTML5 Canvas renderer with `imageRendering: pixelated` for sharp pixel art. Drives multiple animation states (idle, waving, jumping, running, review, and waiting) from `/public/pia/spritesheet.webp`.
 - **Collapsible Floating Widget**: Minimizes into an unobtrusive pill button with an animated pulse beacon and active step indicator, expanding back to the exact step on demand.
 

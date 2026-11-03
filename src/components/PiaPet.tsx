@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Compass, ChevronRight, ChevronLeft, RotateCcw, Sparkles } from 'lucide-react';
+import { X, ChevronRight, ChevronLeft, RotateCcw, Sparkles } from 'lucide-react';
+import { useLanguage, Language } from '../context/LanguageContext';
 
 const FRAME_WIDTH = 192;
 const FRAME_HEIGHT = 208;
@@ -28,83 +29,108 @@ const ANIMATIONS: Record<AnimationName, { frames: number; row: number; speedMs?:
   review: { frames: 6, row: 8, speedMs: 150 },
 };
 
-interface TourStep {
+interface TourStepContent {
   targetId: string | null;
-  badge: string;
-  stepNumber: string;
-  message: string;
-  nextHint: string;
+  badge: { id: string; en: string };
+  stepNumber: { id: string; en: string };
+  message: { id: string; en: string };
+  nextHint: { id: string; en: string };
   anim: AnimationName;
 }
 
-const TOUR_STEPS: TourStep[] = [
+const TOUR_STEPS: TourStepContent[] = [
   {
     targetId: 'init',
-    badge: 'TOUR • WELCOME',
-    stepNumber: 'Mulai',
-    message: 'Halo! Aku Pia 🐾 Selamat datang di portofolio resmi Satria Divo Praditya! Yuk, klik "Mulai Tour" biar aku ajak keliling dan jelasin karya-karyanya ✨',
-    nextHint: 'Mulai Tour',
+    badge: { id: 'TOUR • SAMBUTAN', en: 'TOUR • WELCOME' },
+    stepNumber: { id: 'Mulai', en: 'Start' },
+    message: {
+      id: 'Halo! Aku Pia 🐾 Selamat datang di portofolio resmi Satria Divo Praditya! Yuk, klik "Mulai Tour" biar aku ajak keliling dan jelasin karya-karyanya ✨',
+      en: 'Hello! I am Pia 🐾 Welcome to Satria Divo Praditya\'s official engineering portfolio! Click "Start Tour" and I will guide you through his work ✨',
+    },
+    nextHint: { id: 'Mulai Tour', en: 'Start Tour' },
     anim: 'waving',
   },
   {
     targetId: 'projects',
-    badge: '01 • SELECTED WORKS',
-    stepNumber: '1/6',
-    message: 'Ini 01: Selected Works! Satria mengembangkan sistem IoT & AI nyata: HERA (Heavy Element Risk Analyzer), AgriSense, E-Logbook perikanan (LoRa & Edge AI), hingga CocoaSense 🚀',
-    nextHint: 'Lanjut ke Focus Areas',
+    badge: { id: '01 • KARYA UNGGULAN', en: '01 • SELECTED WORKS' },
+    stepNumber: { id: '1/6', en: '1/6' },
+    message: {
+      id: 'Ini 01: Selected Works! Satria mengembangkan sistem IoT & AI nyata: HERA (Heavy Element Risk Analyzer), AgriSense, E-Logbook perikanan (LoRa & Edge AI), hingga CocoaSense 🚀',
+      en: 'This is 01: Selected Works! Satria builds real-world IoT & AI systems: HERA (Risk Analyzer), AgriSense, maritime E-Logbook (LoRa & Edge AI), and CocoaSense 🚀',
+    },
+    nextHint: { id: 'Lanjut: Fokus Teknis', en: 'Next: Technical Focus' },
     anim: 'review',
   },
   {
     targetId: 'focus',
-    badge: '02 • TECHNICAL FOCUS',
-    stepNumber: '2/6',
-    message: 'Ini 02: Technical Focus! Keahlian Satria berakar di AI & Machine Learning, Embedded Systems (ESP32/LoRa), Cloud Computing (AWS), serta Jaringan Komputer (CCNA) ⚡',
-    nextHint: 'Lanjut ke Experience',
+    badge: { id: '02 • FOKUS TEKNIS', en: '02 • TECHNICAL FOCUS' },
+    stepNumber: { id: '2/6', en: '2/6' },
+    message: {
+      id: 'Ini 02: Technical Focus! Keahlian Satria berakar di AI & Machine Learning, Embedded Systems (ESP32/LoRa), Cloud Computing (AWS), serta Jaringan Komputer (CCNA) ⚡',
+      en: 'This is 02: Technical Focus! Satria\'s expertise spans AI & Machine Learning, Embedded Systems (ESP32/LoRa), Cloud Computing (AWS), and Computer Networking (CCNA) ⚡',
+    },
+    nextHint: { id: 'Lanjut: Pengalaman', en: 'Next: Experience' },
     anim: 'running-right',
   },
   {
     targetId: 'experience',
-    badge: '03 • EXPERIENCE',
-    stepNumber: '3/6',
-    message: 'Ini 03: Experience! Satria adalah Data Scientist Intern di PT Makerindo Prima Solusi dan pernah memimpin sebagai Wakil Gubernur Mahasiswa TI Polinela 💼',
-    nextHint: 'Lanjut ke Achievements',
+    badge: { id: '03 • PENGALAMAN', en: '03 • EXPERIENCE' },
+    stepNumber: { id: '3/6', en: '3/6' },
+    message: {
+      id: 'Ini 03: Experience! Satria adalah Data Scientist Intern di PT Makerindo Prima Solusi dan pernah memimpin sebagai Wakil Gubernur Mahasiswa TI Polinela 💼',
+      en: 'This is 03: Experience! Satria is a Data Scientist Intern at PT Makerindo Prima Solusi and served as Vice Governor of the IT Student Executive Board at Polinela 💼',
+    },
+    nextHint: { id: 'Lanjut: Prestasi', en: 'Next: Achievements' },
     anim: 'review',
   },
   {
     targetId: 'achievements',
-    badge: '04 • ACHIEVEMENTS',
-    stepNumber: '4/6',
-    message: 'Ini 04: Achievements! Meraih Juara 2 Cyber Security KMIPN 2026 tingkat nasional, juara inovasi AITeC VI, dan publikasi riset Random Forest di prosiding ISC-ASSH 🏆',
-    nextHint: 'Lanjut ke Verified Badges',
+    badge: { id: '04 • PRESTASI & RISET', en: '04 • ACHIEVEMENTS' },
+    stepNumber: { id: '4/6', en: '4/6' },
+    message: {
+      id: 'Ini 04: Achievements! Meraih Juara 2 Cyber Security KMIPN 2026 tingkat nasional, juara inovasi AITeC VI, dan publikasi riset Random Forest di prosiding ISC-ASSH 🏆',
+      en: 'This is 04: Achievements! Won 2nd Place in Cyber Security at KMIPN 2026 national competition, AITeC VI champion, and author of Random Forest research at ISC-ASSH 🏆',
+    },
+    nextHint: { id: 'Lanjut: Lencana', en: 'Next: Verified Badges' },
     anim: 'jumping',
   },
   {
     targetId: 'certifications',
-    badge: '05 • VERIFIED BADGES',
-    stepNumber: '5/6',
-    message: 'Ini 05: Verified Badges! Memiliki 14 sertifikasi resmi terverifikasi Credly, termasuk AWS Cloud Architecting, Cisco CCNA & CCNP, IBM Granite, dan MikroTik MTCNA 📜',
-    nextHint: 'Lanjut ke Connect',
+    badge: { id: '05 • LENCANA RESMI', en: '05 • VERIFIED BADGES' },
+    stepNumber: { id: '5/6', en: '5/6' },
+    message: {
+      id: 'Ini 05: Verified Badges! Memiliki 14 sertifikasi resmi terverifikasi Credly, termasuk AWS Cloud Architecting, Cisco CCNA & CCNP, IBM Granite, dan MikroTik MTCNA 📜',
+      en: 'This is 05: Verified Badges! Holds 14 verified Credly credentials, including AWS Cloud Architecting, Cisco CCNA & CCNP, IBM Granite, and MikroTik MTCNA 📜',
+    },
+    nextHint: { id: 'Lanjut: Kontak', en: 'Next: Connect' },
     anim: 'review',
   },
   {
     targetId: 'contact',
-    badge: '06 • CONNECT',
-    stepNumber: '6/6',
-    message: 'Ini 06: Connect! Butuh konsultasi IoT/AI, kolaborasi proyek, atau peluang kerja? Satria sangat terbuka untuk berdiskusi lewat LinkedIn, GitHub, atau Email 📬',
-    nextHint: 'Selesaikan Tour',
+    badge: { id: '06 • HUBUNGI SATRIA', en: '06 • CONNECT' },
+    stepNumber: { id: '6/6', en: '6/6' },
+    message: {
+      id: 'Ini 06: Connect! Butuh konsultasi IoT/AI, kolaborasi proyek, atau peluang kerja? Satria sangat terbuka untuk berdiskusi lewat LinkedIn, GitHub, atau Email 📬',
+      en: 'This is 06: Connect! Seeking IoT/AI consulting, project collaboration, or engineering talent? Satria is open to opportunities via LinkedIn, GitHub, or Email 📬',
+    },
+    nextHint: { id: 'Selesaikan Tour', en: 'Finish Tour' },
     anim: 'waving',
   },
   {
     targetId: 'init',
-    badge: 'TOUR • SELESAI',
-    stepNumber: 'Selesai',
-    message: 'Yeay, tour selesai! 🎉 Terima kasih banyak sudah mampir menjelajahi portofolio Satria. Klik "Ulang Tour" kapan pun kamu ingin panduan lagi ya ✨',
-    nextHint: 'Ulang Tour',
+    badge: { id: 'TOUR • SELESAI', en: 'TOUR • COMPLETE' },
+    stepNumber: { id: 'Selesai', en: 'Complete' },
+    message: {
+      id: 'Yeay, tour selesai! 🎉 Terima kasih banyak sudah mampir menjelajahi portofolio Satria. Klik "Ulang Tour" kapan pun kamu ingin panduan lagi ya ✨',
+      en: 'Hooray, tour completed! 🎉 Thank you for exploring Satria\'s portfolio. Click "Restart Tour" anytime you would like to tour again ✨',
+    },
+    nextHint: { id: 'Ulang Tour', en: 'Restart Tour' },
     anim: 'jumping',
   },
 ];
 
 export function PiaPet() {
+  const { lang, setLang } = useLanguage();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const imageRef = useRef<HTMLImageElement | null>(null);
   const bubbleTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -113,9 +139,10 @@ export function PiaPet() {
   const [currentAnim, setCurrentAnim] = useState<AnimationName>('idle');
   const [showBubble, setShowBubble] = useState(false);
   const [tourIndex, setTourIndex] = useState<number>(-1);
+  const [hasPickedLanguage, setHasPickedLanguage] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
-  // Preload spritesheet
+  // Preload spritesheet and immediately greet upon landing
   useEffect(() => {
     const img = new Image();
     img.src = '/pia/spritesheet.webp';
@@ -123,14 +150,11 @@ export function PiaPet() {
       imageRef.current = img;
       setIsLoaded(true);
 
-      // Initial friendly greeting
-      setTimeout(() => {
+      // Greet immediately when opening the portfolio
+      bubbleTimeoutRef.current = setTimeout(() => {
         setCurrentAnim('waving');
         setShowBubble(true);
-        bubbleTimeoutRef.current = setTimeout(() => {
-          setShowBubble(false);
-        }, 6000);
-      }, 1200);
+      }, 400);
     };
 
     return () => {
@@ -190,6 +214,7 @@ export function PiaPet() {
   const goToStep = useCallback((stepIdx: number) => {
     const boundedIdx = Math.max(0, Math.min(stepIdx, TOUR_STEPS.length - 1));
     setTourIndex(boundedIdx);
+    setHasPickedLanguage(true);
 
     const step = TOUR_STEPS[boundedIdx];
     setCurrentAnim(step.anim);
@@ -200,35 +225,61 @@ export function PiaPet() {
       if (targetElement) {
         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
-      // Broadcast tour focus event to trigger section highlighting
       window.dispatchEvent(
         new CustomEvent('pia-tour-step', { detail: { targetId: step.targetId } })
       );
     }
-
-    // Auto-dismiss after 12 seconds of inactivity
-    if (bubbleTimeoutRef.current) clearTimeout(bubbleTimeoutRef.current);
-    bubbleTimeoutRef.current = setTimeout(() => {
-      setShowBubble(false);
-    }, 12000);
   }, []);
 
-  // Advance tour
+  // Advance tour (only triggered by explicit Next button or ArrowRight)
   const advanceTour = useCallback(() => {
-    const nextIdx = tourIndex < 0 ? 0 : (tourIndex + 1) % TOUR_STEPS.length;
-    goToStep(nextIdx);
+    if (tourIndex < 0) {
+      goToStep(1); // Start tour at selected works
+    } else {
+      const nextIdx = (tourIndex + 1) % TOUR_STEPS.length;
+      goToStep(nextIdx === 0 ? 1 : nextIdx);
+    }
   }, [tourIndex, goToStep]);
 
   // Go to previous step
   const prevTour = useCallback(() => {
-    if (tourIndex <= 0) return;
+    if (tourIndex <= 1) {
+      goToStep(0);
+      return;
+    }
     goToStep(tourIndex - 1);
   }, [tourIndex, goToStep]);
 
-  // Keyboard navigation for power users
+  // Handle click on Pia sprite: reopen current step if closed, or play playful reaction if open
+  const handlePetClick = useCallback((e: React.MouseEvent) => {
+    e.stopPropagation();
+
+    // If dialog is closed, reopen at the CURRENT step without advancing
+    if (!showBubble) {
+      setShowBubble(true);
+      if (tourIndex < 0) {
+        setCurrentAnim('waving');
+      } else {
+        const step = TOUR_STEPS[tourIndex];
+        setCurrentAnim(step.anim);
+      }
+      return;
+    }
+
+    // If dialog is already open, do NOT advance tour; trigger a cheerful reaction
+    setCurrentAnim((prev) => (prev === 'jumping' ? 'waving' : 'jumping'));
+  }, [showBubble, tourIndex]);
+
+  // Select language from Pia's greeting
+  const handleSelectLanguage = (selectedLang: Language) => {
+    setLang(selectedLang);
+    setHasPickedLanguage(true);
+    setCurrentAnim('jumping');
+  };
+
+  // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Only handle if bubble is open and not typing in an input
       if (!showBubble) return;
       if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return;
 
@@ -250,7 +301,7 @@ export function PiaPet() {
   const currentStep = tourIndex >= 0 ? TOUR_STEPS[tourIndex] : TOUR_STEPS[0];
   const progressPercent =
     tourIndex <= 0
-      ? 12
+      ? 14
       : tourIndex >= 7
       ? 100
       : Math.round((tourIndex / 6) * 100);
@@ -262,10 +313,12 @@ export function PiaPet() {
         <motion.button
           onClick={() => {
             setIsMinimized(false);
+            setShowBubble(true);
             if (tourIndex < 0) {
-              advanceTour();
+              setCurrentAnim('waving');
             } else {
-              goToStep(tourIndex);
+              const step = TOUR_STEPS[tourIndex];
+              setCurrentAnim(step.anim);
             }
           }}
           initial={{ scale: 0, opacity: 0 }}
@@ -273,13 +326,15 @@ export function PiaPet() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="flex items-center gap-2 bg-surface/95 backdrop-blur-md border border-border-subtle px-3.5 py-2 rounded-full shadow-lg text-xs font-mono text-ink-primary hover:border-accent hover:shadow-accent/10 transition-all"
-          title="Buka Pemandu Portofolio (Pia)"
+          title={lang === 'id' ? 'Buka Pemandu Portofolio (Pia)' : 'Open Portfolio Guide (Pia)'}
         >
           <div className="relative flex items-center justify-center">
             <span className="w-2 h-2 rounded-full bg-accent animate-ping absolute" />
             <span className="w-2 h-2 rounded-full bg-accent relative" />
           </div>
-          <span className="font-semibold tracking-wide">Pemandu Pia</span>
+          <span className="font-semibold tracking-wide">
+            {lang === 'id' ? 'Pemandu Pia' : 'Pia Guide'}
+          </span>
           {tourIndex >= 1 && tourIndex <= 6 && (
             <span className="text-[10px] font-mono text-accent bg-accent/10 px-1.5 py-0.2 rounded-full">
               {tourIndex}/6
@@ -299,26 +354,59 @@ export function PiaPet() {
                 transition={{ type: 'spring', stiffness: 260, damping: 22 }}
                 className="absolute bottom-full left-0 mb-3 w-[min(360px,calc(100vw-32px))] bg-surface/95 backdrop-blur-md border border-border-subtle text-ink-primary p-4 rounded-xl shadow-2xl ring-1 ring-black/[0.03]"
               >
-                {/* Header row with step badge and close button */}
+                {/* Header row with step badge, quick language switch, and close button */}
                 <div className="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-border-subtle">
                   <div className="flex items-center gap-1.5 overflow-hidden">
                     <Sparkles size={13} className="text-accent shrink-0 animate-pulse" />
                     <span className="text-[10px] sm:text-xs font-mono font-bold text-ink-primary uppercase tracking-wider truncate">
-                      {currentStep.badge}
+                      {tourIndex < 0
+                        ? lang === 'id'
+                          ? 'SELAMAT DATANG'
+                          : 'WELCOME'
+                        : currentStep.badge[lang]}
                     </span>
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0">
-                    <span className="text-[10px] font-mono font-medium text-ink-muted bg-paper border border-border-subtle px-1.5 py-0.5 rounded">
-                      {currentStep.stepNumber}
-                    </span>
+                    {/* Quick language switcher in card */}
+                    <div className="flex items-center bg-paper border border-border-subtle rounded-md text-[9px] font-mono p-0.5">
+                      <button
+                        onClick={() => handleSelectLanguage('id')}
+                        className={`px-1.5 py-0.5 rounded transition-colors ${
+                          lang === 'id'
+                            ? 'bg-ink-primary text-white font-bold'
+                            : 'text-ink-secondary hover:text-ink-primary'
+                        }`}
+                        title="Bahasa Indonesia"
+                      >
+                        ID
+                      </button>
+                      <button
+                        onClick={() => handleSelectLanguage('en')}
+                        className={`px-1.5 py-0.5 rounded transition-colors ${
+                          lang === 'en'
+                            ? 'bg-ink-primary text-white font-bold'
+                            : 'text-ink-secondary hover:text-ink-primary'
+                        }`}
+                        title="English"
+                      >
+                        EN
+                      </button>
+                    </div>
+
+                    {tourIndex >= 1 && tourIndex <= 6 && (
+                      <span className="text-[10px] font-mono font-medium text-ink-muted bg-paper border border-border-subtle px-1.5 py-0.5 rounded">
+                        {currentStep.stepNumber[lang]}
+                      </span>
+                    )}
+
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         setShowBubble(false);
                       }}
                       className="text-ink-muted hover:text-ink-primary p-0.5 rounded transition-colors"
-                      title="Tutup dialog"
+                      title={lang === 'id' ? 'Tutup dialog' : 'Close dialog'}
                       aria-label="Tutup dialog"
                     >
                       <X size={13} />
@@ -336,54 +424,117 @@ export function PiaPet() {
                   />
                 </div>
 
-                {/* Message Body */}
-                <p className="text-ink-secondary text-xs sm:text-sm font-body leading-relaxed mb-4">
-                  {currentStep.message}
-                </p>
+                {/* INITIAL GREETING & LANGUAGE SELECTION STATE */}
+                {tourIndex < 0 ? (
+                  <div className="flex flex-col">
+                    <p className="text-ink-primary text-xs sm:text-sm font-body leading-relaxed mb-1 font-medium">
+                      {lang === 'id'
+                        ? 'Halo! Selamat datang di portofolio Satria Divo Praditya 🐾'
+                        : "Hello! Welcome to Satria Divo Praditya's portfolio 🐾"}
+                    </p>
+                    <p className="text-ink-secondary text-xs font-body leading-relaxed mb-3">
+                      {lang === 'id'
+                        ? 'Pilih bahasa untuk menjelajahi portofolio bersama Pia:'
+                        : 'Please choose your preferred language to explore with Pia:'}
+                    </p>
 
-                {/* Interactive Action Bar */}
-                <div className="flex items-center justify-between pt-2 border-t border-border-subtle/80 gap-2">
-                  {/* Prev Button */}
-                  {tourIndex > 0 ? (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        prevTour();
-                      }}
-                      className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-ink-secondary hover:text-ink-primary py-1 px-2 rounded hover:bg-black/[0.03] transition-colors"
-                      title="Kembali ke bagian sebelumnya (Panah Kiri)"
-                    >
-                      <ChevronLeft size={13} />
-                      <span>Kembali</span>
-                    </button>
-                  ) : (
-                    <span className="text-[10px] font-mono text-ink-muted">
-                      Panduan Interaktif
-                    </span>
-                  )}
+                    {/* Language choice buttons */}
+                    <div className="grid grid-cols-2 gap-2 mb-3.5">
+                      <button
+                        onClick={() => handleSelectLanguage('id')}
+                        className={`flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border text-xs font-mono font-medium transition-all ${
+                          lang === 'id' && hasPickedLanguage
+                            ? 'bg-ink-primary text-white border-ink-primary shadow-xs'
+                            : 'bg-paper hover:bg-black/[0.04] border-border-subtle text-ink-primary'
+                        }`}
+                      >
+                        <span>🇮🇩</span>
+                        <span>Bahasa</span>
+                      </button>
+                      <button
+                        onClick={() => handleSelectLanguage('en')}
+                        className={`flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg border text-xs font-mono font-medium transition-all ${
+                          lang === 'en' && hasPickedLanguage
+                            ? 'bg-ink-primary text-white border-ink-primary shadow-xs'
+                            : 'bg-paper hover:bg-black/[0.04] border-border-subtle text-ink-primary'
+                        }`}
+                      >
+                        <span>🇬🇧</span>
+                        <span>English</span>
+                      </button>
+                    </div>
 
-                  {/* Next / Action Button */}
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      advanceTour();
-                    }}
-                    className="inline-flex items-center gap-1.5 text-xs font-mono font-medium bg-ink-primary text-white hover:bg-accent px-3 py-1.5 rounded-md shadow-sm transition-all hover:gap-2 active:scale-95"
-                    title="Lanjut ke bagian berikutnya (Spasi / Panah Kanan)"
-                  >
-                    {tourIndex === 7 ? (
-                      <>
-                        <RotateCcw size={12} />
-                        <span>Ulang Tour</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>{currentStep.nextHint}</span>
+                    {/* Start Tour CTA */}
+                    <div className="flex items-center justify-between pt-2 border-t border-border-subtle/80">
+                      <button
+                        onClick={() => setShowBubble(false)}
+                        className="text-[11px] font-mono text-ink-muted hover:text-ink-secondary transition-colors"
+                      >
+                        {lang === 'id' ? 'Lewati' : 'Skip'}
+                      </button>
+
+                      <button
+                        onClick={advanceTour}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono font-medium bg-ink-primary text-white hover:bg-accent px-3 py-1.5 rounded-md shadow-sm transition-all hover:gap-2 active:scale-95"
+                      >
+                        <span>{lang === 'id' ? 'Mulai Tour' : 'Start Tour'}</span>
                         <ChevronRight size={13} />
-                      </>
-                    )}
-                  </button>
-                </div>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  /* TOUR IN PROGRESS STATE */
+                  <div className="flex flex-col">
+                    <p className="text-ink-secondary text-xs sm:text-sm font-body leading-relaxed mb-4">
+                      {currentStep.message[lang]}
+                    </p>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-border-subtle/80 gap-2">
+                      {/* Prev Button */}
+                      {tourIndex > 0 ? (
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            prevTour();
+                          }}
+                          className="inline-flex items-center gap-1 text-[11px] font-mono font-medium text-ink-secondary hover:text-ink-primary py-1 px-2 rounded hover:bg-black/[0.03] transition-colors"
+                          title={lang === 'id' ? 'Kembali ke bagian sebelumnya' : 'Back to previous section'}
+                        >
+                          <ChevronLeft size={13} />
+                          <span>{lang === 'id' ? 'Kembali' : 'Back'}</span>
+                        </button>
+                      ) : (
+                        <button
+                          onClick={() => setTourIndex(-1)}
+                          className="text-[10px] font-mono text-ink-muted hover:text-ink-primary"
+                        >
+                          {lang === 'id' ? 'Ganti Bahasa' : 'Change Lang'}
+                        </button>
+                      )}
+
+                      {/* Next / Action Button */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          advanceTour();
+                        }}
+                        className="inline-flex items-center gap-1.5 text-xs font-mono font-medium bg-ink-primary text-white hover:bg-accent px-3 py-1.5 rounded-md shadow-sm transition-all hover:gap-2 active:scale-95"
+                      >
+                        {tourIndex === 7 ? (
+                          <>
+                            <RotateCcw size={12} />
+                            <span>{currentStep.nextHint[lang]}</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>{currentStep.nextHint[lang]}</span>
+                            <ChevronRight size={13} />
+                          </>
+                        )}
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 {/* Speech Bubble Tail */}
                 <div className="absolute -bottom-1.5 left-7 w-3 h-3 bg-surface border-b border-r border-border-subtle rotate-45" />
@@ -398,7 +549,7 @@ export function PiaPet() {
               setIsMinimized(true);
             }}
             className="absolute -top-1 -right-1 opacity-80 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity bg-surface border border-border-subtle rounded-full p-1 text-ink-muted hover:text-ink-primary shadow-sm z-10"
-            title="Sembunyikan Pia ke mode minimalis"
+            title={lang === 'id' ? 'Sembunyikan Pia' : 'Minimize Pia'}
             aria-label="Sembunyikan Pia"
           >
             <X size={12} />
@@ -406,11 +557,19 @@ export function PiaPet() {
 
           {/* Pet Sprite Canvas & Base */}
           <motion.div
-            onClick={advanceTour}
+            onClick={handlePetClick}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="cursor-pointer flex flex-col items-center group/pet"
-            title="Klik Pia untuk memandu keliling portofolio!"
+            title={
+              !showBubble
+                ? lang === 'id'
+                  ? 'Buka dialog panduan Pia'
+                  : 'Open Pia tour guide'
+                : lang === 'id'
+                ? 'Pia Pet Companion'
+                : 'Pia Pet Companion'
+            }
           >
             <canvas
               ref={canvasRef}
@@ -428,9 +587,9 @@ export function PiaPet() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
               <span className="font-semibold">
                 {tourIndex < 0
-                  ? 'Pia • Panduan'
+                  ? lang === 'id' ? 'Pia • Sambutan' : 'Pia • Welcome'
                   : tourIndex === 7
-                  ? 'Pia • Selesai'
+                  ? lang === 'id' ? 'Pia • Selesai' : 'Pia • Complete'
                   : `Pia • Tour [${tourIndex}/6]`}
               </span>
             </span>
@@ -440,5 +599,3 @@ export function PiaPet() {
     </div>
   );
 }
-
-

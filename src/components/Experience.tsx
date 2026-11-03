@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { experience, organization } from '../data/portfolio';
+import { useLanguage } from '../context/LanguageContext';
 
 function TimelineItem({
   role,
@@ -50,18 +51,20 @@ function TimelineItem({
 }
 
 export function Experience() {
+  const { lang } = useLanguage();
+
   const items = [
     ...experience.map((e) => ({
-      role: e.role,
+      role: e.role[lang],
       company: e.company,
-      period: e.period,
-      highlights: e.highlights,
+      period: e.period[lang],
+      highlights: e.highlights[lang],
     })),
     ...organization.map((o) => ({
-      role: o.role,
-      company: `${o.org} ${o.department}, ${o.institution}`,
-      period: o.period,
-      highlights: o.highlights,
+      role: o.role[lang],
+      company: `${o.org[lang]} ${o.department[lang]}, ${o.institution[lang]}`,
+      period: o.period[lang],
+      highlights: o.highlights[lang],
     })),
   ];
 
