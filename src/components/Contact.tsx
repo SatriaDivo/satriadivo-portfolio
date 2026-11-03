@@ -24,7 +24,7 @@ export function Contact() {
           transition={{ type: "spring", stiffness: 80, damping: 18 }}
           className="text-ink-secondary leading-relaxed text-base sm:text-lg font-body mb-8"
         >
-          Interested in discussing system architecture, project collaboration, or professional opportunities? Let's connect.
+          Interested in discussing system architecture, project collaboration, or professional opportunities with Satria Divo Praditya? Let's connect.
         </motion.p>
 
         <motion.a

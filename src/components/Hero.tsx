@@ -37,7 +37,7 @@ export function Hero() {
           variants={stagger} custom={2}
           className="text-lg sm:text-xl text-ink-secondary font-body leading-relaxed max-w-2xl mb-8"
         >
-          I am a <strong className="text-ink-primary font-medium">Data Scientist & IoT Engineer</strong>. 
+          I am <strong className="text-ink-primary font-medium">Satria Divo Praditya</strong>, a <strong className="text-ink-primary font-medium">Data Scientist & IoT Engineer</strong>. 
           I build layered systems from constrained firmware in embedded devices to scalable AI pipelines in the cloud.
         </motion.p>
 

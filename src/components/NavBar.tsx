@@ -38,7 +38,7 @@ export function NavBar() {
           }}
           className="font-mono font-bold text-xs sm:text-sm text-ink-primary hover:text-accent transition-colors shrink-0 tracking-tight"
         >
-          SATRIA DIVO / <span className="text-ink-muted font-normal">PORTFOLIO</span>
+          SATRIA DIVO PRADITYA / <span className="text-ink-muted font-normal">PORTFOLIO</span>
         </a>
 
         <nav className="hidden sm:flex items-center gap-8">
